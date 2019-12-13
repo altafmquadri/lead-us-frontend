@@ -9,7 +9,7 @@ class NewLeadContainer extends React.Component {
         street: "",
         city: "",
         state: "",
-        postal_code: "",
+        postalCode: "",
         phoneNumber: "",
         beneficiaryInformation: "",
         dateOfBirth: "",
