@@ -1,0 +1,22 @@
+.navbar {
+    direction: rtl;
+    padding: 5px;
+}
+
+.navbar a {
+    padding: 3px;
+    margin: 5px;
+    
+    
+}
+
+.main-page-container {
+    display: grid;
+    flex-direction: column;
+    
+}
+
+#root {
+    width: 70%;
+    margin: 0px auto;
+}

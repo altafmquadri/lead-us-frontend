@@ -1,9 +1,12 @@
 import React from 'react';
-import AppointmentsContainer from '../containers/AppointmentsContainer';
+
 
 const Appointment = (props) => {
     return (
-null
+        <div className="appointment">
+         <li>{props.appointment.title}</li>   
+         </div>
+         
     )
 }
 

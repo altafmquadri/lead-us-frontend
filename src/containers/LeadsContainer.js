@@ -8,15 +8,13 @@ class LeadsContainer extends React.Component {
     }
 
     render() { 
-        console.log(this.props.leads)
+        
         return ( 
             <div className="leads-container">
                 <h1>My Leads</h1>
                 <ul>
-                {this.renderLeads()}
+                    {this.renderLeads()}
                 </ul>
-                
-     
             </div>
          );
      }

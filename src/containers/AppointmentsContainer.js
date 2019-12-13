@@ -3,7 +3,7 @@ import Appointment from '../components/Appointment'
 
 class AppointmentsContainer extends React.Component {
     
-    renderLeads = () => {
+    renderAppointments = () => {
         return this.props.appointments.map(appointment => <Appointment key={appointment.id} appointment={appointment}/>)
     }
 
@@ -12,6 +12,7 @@ class AppointmentsContainer extends React.Component {
         return ( 
             <div className="appointments-container">
                 <h1>appointments</h1>
+                {this.renderAppointments()}
             </div>
          );
     }

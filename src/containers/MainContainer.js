@@ -30,7 +30,7 @@ class MainContainer extends React.Component {
 
     render() { 
         
-        
+        console.log("i am from ",this.state.users)
         return ( 
            <div className="main-container">
                <LeadsContainer leads={this.state.leads}/>
