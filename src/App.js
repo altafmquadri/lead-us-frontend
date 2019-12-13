@@ -1,10 +1,12 @@
 import React from 'react';
-
+import Navbar from './components/Navbar'
+import MainContainer from './containers/MainContainer';
 
 function App() {
   return (
     <div>
-      <h1> this is app</h1>
+      <Navbar />
+      <MainContainer />
     </div>
   );
 }
