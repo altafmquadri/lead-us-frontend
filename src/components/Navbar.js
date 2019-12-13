@@ -1,18 +1,15 @@
 import React from 'react';
 import './Navbar.css'
+import { Link } from 'react-router-dom'
 
 const Navbar = (props) => {
     return (
-        
         <div className="navbar">
-            {/* eslint-disable-next-line */}
-            <a href="#">New Lead</a>
-            {/* eslint-disable-next-line */}
-            <a href="#">Profile</a>
-            {/* eslint-disable-next-line */}
-            <a href="#">Metrics</a>
-            {/* eslint-disable-next-line */}
-            <a href="#">Sign out</a>
+            {<Link to="/">Home</Link>}
+            {<Link to="/new">New Lead</Link>}
+            {<Link to="/profile">Profile</Link>}
+            {<Link to="/metrics">Metrics</Link>}
+            {<Link to="/signout">Sign Out</Link>}
         </div>
     )
 }
