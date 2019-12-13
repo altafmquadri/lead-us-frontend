@@ -26,11 +26,9 @@ class MainContainer extends React.Component {
             
      }
 
-    
 
-    render() { 
-        
-        
+    render() {         
+    
         return ( 
            <div className="main-container">
                <LeadsContainer leads={this.state.leads}/>
