@@ -1,12 +1,13 @@
 import React from 'react';
 
 const NewLeadForm = (props) => {
-    console.log(props)
+    
     
     return (
-        <div className="new-lead-form">
+        <div className="new-lead-form-div">
 
-        <form>
+        <form className="new-lead-form"
+        onSubmit={props.formSubmissionHandler}>
             <label>First Name:
                 <input type="text" 
                 name="firstName"

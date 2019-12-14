@@ -15,6 +15,10 @@ class MainContainer extends React.Component {
         appointments: []
      }
 
+     addNewLead = (newLead) => {
+         this.setState({ leads: {...this.state, leads: [...this.state.leads, newLead] } });
+     }
+
      componentDidMount() {
          return fetch(api).then(res => res.json()).then(res => this.setState(
              { 
@@ -31,7 +35,7 @@ class MainContainer extends React.Component {
     
         return ( 
            <div className="main-container">
-               <LeadsContainer leads={this.state.leads}/>
+               <LeadsContainer leads={this.state.leads} addNewLead={this.addNewLead}/>
                <AppointmentsContainer appointments={this.state.appointments}/>
            </div> 
          );
