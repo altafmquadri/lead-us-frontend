@@ -18,6 +18,21 @@ class NewLeadContainer extends React.Component {
         dateOfBirth: ""
      }
 
+     setInitialState = () => {
+         this.setState({ 
+             currentUser: 1,
+             firstName: "",
+             lastName: "",
+             street: "",
+             city: "",
+             state: "",
+             postalCode: "",
+             phoneNumber: "",
+             beneficiaryInformation: "",
+             dateOfBirth: ""
+            });
+     }
+
      formHandler = (e) => {
          this.setState({ [e.target.name]: e.target.value  });
      }
@@ -43,11 +58,14 @@ class NewLeadContainer extends React.Component {
                  beneficiary_information: this.state.beneficiaryInformation,
                  date_of_birth: this.state.dateOfBirth
              })
-         }).then(resp => resp.json()).then(data => console.log)
+         }).then(resp => resp.json()).then(lead => this.props.addNewLead(lead))
+         this.setInitialState()
+         this.props.history.push('/')
+
      }
 
     render() { 
-        console.log(this.props)
+        // console.log(this.props)
         return ( 
             <div className="new-lead">
                 <NewLeadForm 

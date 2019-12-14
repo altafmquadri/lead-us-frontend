@@ -3,43 +3,17 @@ import LeadsContainer from './LeadsContainer';
 import AppointmentsContainer from './AppointmentsContainer';
 import './MainContainer.css'
 
-const api = 'http://localhost:3000/api/v1/users'
-
-class MainContainer extends React.Component {
 
 
-    state = { 
-        users: [],
-        currentUser: [],
-        leads: [],
-        appointments: []
-     }
+const MainContainer = (props) =>  {
 
-     addNewLead = (newLead) => {
-         this.setState({ leads: {...this.state, leads: [...this.state.leads, newLead] } });
-     }
-
-     componentDidMount() {
-         return fetch(api).then(res => res.json()).then(res => this.setState(
-             { 
-                users: res.users,
-                currentUser: res.users[0], //will have to implement some logic to get the current user  
-                leads: res.users[0].leads,
-                appointments: res.users[0].appointments
-            }))
-            
-     }
-
-
-    render() {         
+    return ( 
+        <div className="main-container">
+            <LeadsContainer leads={props.leads} {...props} />
+            <AppointmentsContainer appointments={props.appointments}/>
+        </div> 
+        );
     
-        return ( 
-           <div className="main-container">
-               <LeadsContainer leads={this.state.leads} addNewLead={this.addNewLead}/>
-               <AppointmentsContainer appointments={this.state.appointments}/>
-           </div> 
-         );
-    }
 }
  
 export default MainContainer;
