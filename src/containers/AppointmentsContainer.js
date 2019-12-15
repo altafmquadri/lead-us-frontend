@@ -4,7 +4,9 @@ import Appointment from '../components/Appointment'
 class AppointmentsContainer extends React.Component {
     
     renderAppointments = () => {
-        return this.props.appointments.map(appointment => <Appointment key={appointment.id} appointment={appointment}/>)
+        return this.props.appointments.map(appointment => <Appointment key={appointment.id} 
+            appointment={appointment}
+            findLeadName={this.props.findLeadName}/>)
     }
 
 

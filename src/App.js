@@ -20,6 +20,13 @@ class App extends React.Component {
     loading: true
  }
 
+ findLeadName = (id) => {
+   let name
+   let lead = this.state.leads.find(lead => lead.id === id)
+   name = `${lead.first_name} ${lead.last_name}`
+   return name
+ }
+
  //triggered by new lead form
  addNewLead = (newLead) => {
     this.setState(
@@ -80,7 +87,7 @@ class App extends React.Component {
 
                 <Route path="/" render={(routerProps) =>  <MainContainer 
                 leads={this.state.leads} onLeadClick={this.onLeadClick}
-                appointments={this.state.appointments}
+                appointments={this.state.appointments} findLeadName={this.findLeadName}
                 {...routerProps}/>}></Route>
 
               </Switch>

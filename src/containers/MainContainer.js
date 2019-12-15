@@ -10,7 +10,7 @@ const MainContainer = (props) =>  {
     return ( 
         <div className="main-container">
             <LeadsContainer leads={props.leads} {...props} />
-            <AppointmentsContainer appointments={props.appointments}/>
+            <AppointmentsContainer appointments={props.appointments} findLeadName={props.findLeadName}/>
         </div> 
         );
     
