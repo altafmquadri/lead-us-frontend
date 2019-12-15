@@ -15,6 +15,7 @@ class App extends React.Component {
     currentUser: [],
     leads: [],
     appointments: [],
+    calls: [],
     clickedLead: [],
     loading: true
  }
@@ -36,7 +37,9 @@ class App extends React.Component {
             currentUser: res.users[0], //will have to implement some logic to get the current user  
             leads: res.users[0].leads,
             appointments: res.users[0].appointments,
+            calls: res.users[0].calls,
             clickedLead: [],
+            clickedLeadCalls: [],
             loading: false //added for purpose of establishing dynamic routes
         }))
         
@@ -45,13 +48,17 @@ class App extends React.Component {
  //to point us to the lead show page
  onLeadClick = (leadData) => {
   //  console.log("i am the clicked lead", leadData.lead)
-   this.setState({ clickedLead: leadData.lead  }, () => {
+   this.setState(
+     { 
+       clickedLead: leadData.lead,
+       clickedLeadCalls: this.state.calls.filter(call => call.lead_id === leadData.lead.id)  
+      }, () => {
      this.props.history.push(`/leads/${leadData.lead.id}`)
    }) 
  }
 
   render() {
-
+    // console.log(this.state.calls)
     if (this.state.loading) {
       return <h1>Loading...</h1>
     }
@@ -64,6 +71,7 @@ class App extends React.Component {
 
                 <Route path="/leads/:id" render={(routerProps) => <LeadActivityContainer 
                 lead={this.state.clickedLead}
+                calls={this.state.clickedLeadCalls}
                 {...routerProps}/> }></Route>
 
                 <Route path="/new" render={(routerProps) => <NewLeadContainer 

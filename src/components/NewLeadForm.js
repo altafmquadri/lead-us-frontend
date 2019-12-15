@@ -46,7 +46,8 @@ const NewLeadForm = (props) => {
                 name="postalCode" /></label><br/><br/>
 
             <label>Phone Number:        
-                <input type="text"
+                <input type="tel"
+                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                 value={props.form.phoneNumbe}
                 onChange={props.formHandler} 
                 name="phoneNumber" /></label><br/><br/>

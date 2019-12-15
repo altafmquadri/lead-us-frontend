@@ -1,14 +1,16 @@
 import React from 'react';
 import './LeadActivityContainer.css'
+import ShowLeadContainer from './ShowLeadContainer';
 
 class LeadActivityContainer extends React.Component {
     state = {  }
 
 
     render() { 
+        console.log(this.props.calls)
         return ( 
             <div className="lead-show-page">
-                <h1>Show Lead</h1>
+                <ShowLeadContainer lead={this.props.lead}/>
                 <h1>Calls</h1>
 
             </div>
