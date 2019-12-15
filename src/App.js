@@ -4,6 +4,7 @@ import MainContainer from './containers/MainContainer';
 import NewLeadContainer from './containers/NewLeadContainer';
 
 import {BrowserRouter as Router, Switch, Route, withRouter } from "react-router-dom";
+import ShowLeadContainer from './containers/ShowLeadContainer';
 
 const api = 'http://localhost:3000/api/v1/users'
 
@@ -13,7 +14,9 @@ class App extends React.Component {
     users: [],
     currentUser: [],
     leads: [],
-    appointments: []
+    appointments: [],
+    // clickedLead: [],
+    loading: true
  }
 
  //triggered by new lead form
@@ -32,13 +35,31 @@ class App extends React.Component {
             users: res.users,
             currentUser: res.users[0], //will have to implement some logic to get the current user  
             leads: res.users[0].leads,
-            appointments: res.users[0].appointments
+            appointments: res.users[0].appointments,
+            clickedLead: [],
+            loading: false //added for purpose of establishing dynamic routes
         }))
         
  }
 
+ //to point us to the lead show page
+ onLeadClick = (leadData) => {
+   console.log("i am the clicked lead", leadData.lead)
+   this.setState({ clickedLead: leadData.lead  }, () => {
+    return this.props.history.push(`/leads/${leadData.lead.id}`)
+   })
+    
+ }
+
   render() {
-    console.log(this.state)
+
+    if (this.state.loading) {
+      return <h1>Loading...</h1>
+    }
+
+
+    //console.log(this.props)
+
     return (
       <div className="main-page-container">
         <Router>
@@ -46,13 +67,21 @@ class App extends React.Component {
               <Navbar />
 
               <Switch>
+                {/* place holder for leads/:id path */}
+                <Route path="/leads/:id" render={(routerProps) => <ShowLeadContainer 
+                lead={this.state.clickedLead}
+                {...routerProps}/> }></Route>
+
                 <Route path="/new" render={(routerProps) => <NewLeadContainer 
                 addNewLead={this.addNewLead} 
                 {...routerProps}/>}></Route> 
 
 
-                <Route exact path="/" render={(routerProps) =>  <MainContainer 
-                leads={this.state.leads} 
+                {/* <Route path="/leads/:id" component={ShowLeadContainer}></Route> */}
+
+
+                <Route path="/" render={(routerProps) =>  <MainContainer 
+                leads={this.state.leads} onLeadClick={this.onLeadClick}
                 appointments={this.state.appointments}
                 {...routerProps}/>}></Route>
 
