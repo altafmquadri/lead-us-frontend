@@ -85,7 +85,7 @@ class App extends React.Component {
                 addNewLead={this.addNewLead} 
                 {...routerProps}/>}></Route> 
 
-                <Route path="/" render={(routerProps) =>  <MainContainer 
+                <Route exact path="/" render={(routerProps) =>  <MainContainer 
                 leads={this.state.leads} onLeadClick={this.onLeadClick}
                 appointments={this.state.appointments} findLeadName={this.findLeadName}
                 {...routerProps}/>}></Route>

@@ -7,7 +7,7 @@ const ShowLeadContainer = (props) => {
     
         <div className="lead-display">
             <h1>Lead Details</h1>
-            <LeadDetails lead={props.lead}/>
+            <LeadDetails lead={props.lead} onPhoneClick={props.onPhoneClick}/>
         </div>
     )
 }

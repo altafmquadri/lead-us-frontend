@@ -11,7 +11,7 @@ const LeadDetails = (props) => {
             <p>{`Address: ${street}, ${city}, ${state} ${postal_code}`}</p>
             <p>{`DOB: ${date_of_birth}`}</p>
             <p>{`Beneficiary: ${beneficiary_information}`}</p>
-            <p>{`Phone Number: ${phone_number}`}</p>
+            <p onClick={props.onPhoneClick}>{`Phone Number: ${phone_number}`}</p>
         </div>
     )
 } 
