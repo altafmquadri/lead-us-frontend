@@ -3,6 +3,7 @@ import React from 'react';
 const CallForm = (props) => {
     return (
         <div className="call-form">
+            <br/><br/>
             <label>Call Status: </label>
             <select name="call_status">
                 <option value="No Answer">No Answer</option>
