@@ -4,7 +4,7 @@ import MainContainer from './containers/MainContainer';
 import NewLeadContainer from './containers/NewLeadContainer';
 
 import {Switch, Route, withRouter } from "react-router-dom";
-import ShowLeadContainer from './containers/ShowLeadContainer';
+import LeadActivityContainer from './containers/LeadActivityContainer';
 
 const api = 'http://localhost:3000/api/v1/users'
 
@@ -61,8 +61,8 @@ class App extends React.Component {
           <div>
               <Navbar />
               <Switch>
-                
-                <Route path="/leads/:id" render={(routerProps) => <ShowLeadContainer 
+
+                <Route path="/leads/:id" render={(routerProps) => <LeadActivityContainer 
                 lead={this.state.clickedLead}
                 {...routerProps}/> }></Route>
 
