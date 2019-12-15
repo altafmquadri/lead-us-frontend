@@ -3,7 +3,7 @@ import Navbar from './components/Navbar'
 import MainContainer from './containers/MainContainer';
 import NewLeadContainer from './containers/NewLeadContainer';
 
-import {BrowserRouter as Router, Switch, Route, withRouter } from "react-router-dom";
+import {Switch, Route, withRouter } from "react-router-dom";
 import ShowLeadContainer from './containers/ShowLeadContainer';
 
 const api = 'http://localhost:3000/api/v1/users'
@@ -15,7 +15,7 @@ class App extends React.Component {
     currentUser: [],
     leads: [],
     appointments: [],
-    // clickedLead: [],
+    clickedLead: [],
     loading: true
  }
 
@@ -44,11 +44,10 @@ class App extends React.Component {
 
  //to point us to the lead show page
  onLeadClick = (leadData) => {
-   console.log("i am the clicked lead", leadData.lead)
+  //  console.log("i am the clicked lead", leadData.lead)
    this.setState({ clickedLead: leadData.lead  }, () => {
-    return this.props.history.push(`/leads/${leadData.lead.id}`)
-   })
-    
+     this.props.history.push(`/leads/${leadData.lead.id}`)
+   }) 
  }
 
   render() {
@@ -57,17 +56,12 @@ class App extends React.Component {
       return <h1>Loading...</h1>
     }
 
-
-    //console.log(this.props)
-
     return (
       <div className="main-page-container">
-        <Router>
           <div>
               <Navbar />
-
               <Switch>
-                {/* place holder for leads/:id path */}
+                
                 <Route path="/leads/:id" render={(routerProps) => <ShowLeadContainer 
                 lead={this.state.clickedLead}
                 {...routerProps}/> }></Route>
@@ -76,10 +70,6 @@ class App extends React.Component {
                 addNewLead={this.addNewLead} 
                 {...routerProps}/>}></Route> 
 
-
-                {/* <Route path="/leads/:id" component={ShowLeadContainer}></Route> */}
-
-
                 <Route path="/" render={(routerProps) =>  <MainContainer 
                 leads={this.state.leads} onLeadClick={this.onLeadClick}
                 appointments={this.state.appointments}
@@ -87,7 +77,6 @@ class App extends React.Component {
 
               </Switch>
             </div>
-          </Router>
         </div>
     );
   }

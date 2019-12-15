@@ -7,8 +7,8 @@ class LeadsContainer extends React.Component {
         return this.props.leads.map(lead => 
         <Lead key={lead.id} 
             lead={lead} 
-            // addNewLead={this.props.addNewLead} this should be hear will comment out and delete later
             onLeadClick={this.props.onLeadClick}
+            // addNewLead={this.props.addNewLead} this shouldn't be here will comment out and delete later
             // history={this.props.history}
             // match={this.props.match}
             // location={this.props.location}
