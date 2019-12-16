@@ -12,8 +12,7 @@ const CallForm = (props) => {
                         value={props.call_status} 
                         onChange={props.onFormChange}
                         name="call_status">
-                        <option value="" defaultValue disabled hidden>Choose here</option>
-                        <option value="No Answer">No Answer</option>
+                        <option defaultValue="No Answer" >No Answer</option>
                         <option value="Left Message">Left Message</option>
                         <option value="Call Again">Call Again</option>
                     </select>

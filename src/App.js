@@ -17,6 +17,8 @@ class App extends React.Component {
     appointments: [],
     calls: [],
     clickedLead: [],
+    clickedLeadCalls: [],
+    clickedLeadAppointments: [],
     loading: true
  }
 
@@ -32,9 +34,18 @@ class App extends React.Component {
     this.setState(
       {
         ...this.state, 
-        leads:  [...this.state.leads, newLead] 
+        leads:  [...this.state.leads, newLead]
+        
       }) 
-     
+ }
+
+ addNewCall = (newCall) => {
+   this.setState(
+     {
+       ...this.state,
+       calls: [...this.state.calls, newCall],
+       clickedLeadCalls: [...this.state.clickedLeadCalls, newCall]  
+    });
  }
 
  componentDidMount() {
@@ -47,6 +58,7 @@ class App extends React.Component {
             calls: res.users[0].calls,
             clickedLead: [],
             clickedLeadCalls: [],
+            clickedLeadAppointments: [],
             loading: false //added for purpose of establishing dynamic routes
         }))
         
@@ -58,7 +70,8 @@ class App extends React.Component {
    this.setState(
      { 
        clickedLead: leadData.lead,
-       clickedLeadCalls: this.state.calls.filter(calls => calls.lead_id === leadData.lead.id)  
+       clickedLeadCalls: this.state.calls.filter(calls => calls.lead_id === leadData.lead.id), 
+       clickedLeadAppointments: this.state.appointments.filter(appointments => appointments.lead_id === leadData.lead.id)
       }, () => {
      this.props.history.push(`/leads/${leadData.lead.id}`)
    }) 
@@ -79,6 +92,9 @@ class App extends React.Component {
                 <Route path="/leads/:id" render={(routerProps) => <LeadActivityContainer 
                 lead={this.state.clickedLead}
                 calls={this.state.clickedLeadCalls}
+                // appointments={this.state.appointments}
+                clickedLeadAppointments={this.state.clickedLeadAppointments}
+                addNewCall={this.addNewCall}
                 {...routerProps}/> }></Route>
 
                 <Route path="/new" render={(routerProps) => <NewLeadContainer 
