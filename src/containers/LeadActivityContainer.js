@@ -4,18 +4,32 @@ import ShowLeadContainer from './ShowLeadContainer';
 import CallsContainer from './CallsContainer';
 import CallForm from '../components/CallForm'
 import AppointmentsContainer from './AppointmentsContainer';
+import AppointmentForm from '../components/AppointmentForm'
 
 const api = 'http://localhost:3000/api/v1/calls'
 
 class LeadActivityContainer extends React.Component {
     state = { 
+
+        //for both
         user_id: 1, //hard coded for now
         lead_id: this.props.lead.id,
+
+        //for calls
         callForm: false,
-        appointmentForm: false,
+        appointmentForm: true,
         call_status: "No Answer",
         'appointment_made?': false,
-        'archive_lead?': false
+        'archive_lead?': false,
+
+        //for appointments
+        title: "",
+        date: "",
+        start_time: "",
+        end_time: "",
+        'presentation_made?': false,
+        'sales_made?': false
+
      }
 
      setInitialState = () => {
@@ -49,27 +63,38 @@ class LeadActivityContainer extends React.Component {
         this.setState({ 'appointment_made?': !this.state['appointment_made?']  });
     }
 
+    onTogglePresentation = () => {
+        this.setState({ 'presentation_made?': !this.state['presentation_made?']  });
+    }
+
     onFormSubmission = (e) => {
         e.preventDefault()
-        fetch(api, {
-            method: 'POST',
-            headers: {
-                "Content-type": 'application/json',
-                Accepts: 'application/json'
-            },
-            body: JSON.stringify({
-                user_id: this.state.user_id,
-                lead_id: this.state.lead_id,
-                call_status: this.state.call_status,
-                'appointment_made?': this.state['appointment_made?'],
-                'archive_lead?': this.state['archive_lead?']
-            })
-        }).then(resp => resp.json()).then(call => this.props.addNewCall(call))
-        this.setInitialState()
+
+        if (this.state['appointment_made?']=== false) {
+            fetch(api, {
+                method: 'POST',
+                headers: {
+                    "Content-type": 'application/json',
+                    Accepts: 'application/json'
+                },
+                body: JSON.stringify({
+                    user_id: this.state.user_id,
+                    lead_id: this.state.lead_id,
+                    call_status: this.state.call_status,
+                    'appointment_made?': this.state['appointment_made?'],
+                    'archive_lead?': this.state['archive_lead?']
+                })
+            }).then(resp => resp.json()).then(call => this.props.addNewCall(call))
+            this.setInitialState()
+        }
+    }
+
+    partialFormHandler = (e) => {
+        this.setState({ [e.target.name]: e.target.value  });
     }
 
     render() { 
-        console.log('I am from props in leadActCont',this.props)
+        // console.log('I am from props in leadActCont',this.props)
         return ( 
             <div className="activity-show-page">
                 <div className="lead-show-page">
@@ -83,10 +108,16 @@ class LeadActivityContainer extends React.Component {
                 onFormSubmission={this.onFormSubmission}
                 onToggleAppointment={this.onToggleAppointment}
                 onFormChange={this.onFormChange}/> : null }
+
+                {this.state.appointmentForm ? <AppointmentForm formData={this.state}
+                partialFormHandler={this.partialFormHandler}
+                onTogglePresentation={this.onTogglePresentation}
+                /> : null}
             </div>
+                
             );
         }
     }
     
     export default LeadActivityContainer;
-    //console.log("this is the current object", this.props.lead)
+   
