@@ -58,14 +58,14 @@ class App extends React.Component {
    this.setState(
      { 
        clickedLead: leadData.lead,
-       clickedLeadCalls: this.state.calls.filter(call => call.lead_id === leadData.lead.id)  
+       clickedLeadCalls: this.state.calls.filter(calls => calls.lead_id === leadData.lead.id)  
       }, () => {
      this.props.history.push(`/leads/${leadData.lead.id}`)
    }) 
  }
 
   render() {
-    // console.log(this.state.calls)
+    // console.log("i am clicked lead calls",this.state.clickedLeadCalls)
     if (this.state.loading) {
       return <h1>Loading...</h1>
     }

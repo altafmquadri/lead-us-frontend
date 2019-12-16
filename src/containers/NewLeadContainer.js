@@ -1,7 +1,7 @@
 import React from 'react';
 import NewLeadForm from '../components/NewLeadForm'
 
-const api = 'http://localhost:3000/api/v1/users'
+const api = 'http://localhost:3000/api/v1/leads'
 
 class NewLeadContainer extends React.Component {
 
@@ -63,6 +63,8 @@ class NewLeadContainer extends React.Component {
          this.props.history.push('/')
 
      }
+
+     
 
     render() { 
         // console.log(this.props)

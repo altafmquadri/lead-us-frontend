@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const LeadDetails = (props) => {
-    console.log(props)
+    // console.log(props)
     const { first_name, last_name, date_of_birth, street, city, state, postal_code, beneficiary_information, phone_number } = props.lead
     return (
         <div className="lead-details">
