@@ -9,7 +9,6 @@ const Appointment = (props) => {
     return (
         <div className="appointment">
             {selectRender()}
-         {/* <li>{`${props.appointment.title} with ${props.findLeadName(props.appointment.lead_id)}`}</li>    */}
          </div>
          
     )

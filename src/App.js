@@ -92,7 +92,6 @@ class App extends React.Component {
                 <Route path="/leads/:id" render={(routerProps) => <LeadActivityContainer 
                 lead={this.state.clickedLead}
                 calls={this.state.clickedLeadCalls}
-                // appointments={this.state.appointments}
                 clickedLeadAppointments={this.state.clickedLeadAppointments}
                 addNewCall={this.addNewCall}
                 {...routerProps}/> }></Route>

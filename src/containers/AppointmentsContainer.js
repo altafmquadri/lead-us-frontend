@@ -4,24 +4,21 @@ import Appointment from '../components/Appointment'
 class AppointmentsContainer extends React.Component {
     
     renderAppointments = () => {
-        //define hear whether the props exist if they do, do map
-        //if not do filter
-        console.log(this.props)
+        //define whether findLeadName props exist, to apply conditional rendering of appointments to Home Page, and to Lead Activity Page
+    
         if (this.props.findLeadName) {
-            return this.props.appointments.map(appointment => <Appointment key={appointment.id} 
+
+            return this.props.appointments.map(appointment => <Appointment 
+                key={appointment.id} 
                 appointment={appointment}
-                findLeadName={this.props.findLeadName ? this.props.findLeadName : null}/>)
+                findLeadName={this.props.findLeadName}/>)
+
         } else if (this.props.clickedLeadAppointments){
-            return this.props.clickedLeadAppointments.map(appointment => <Appointment key={appointment.id} 
+            return this.props.clickedLeadAppointments.map(appointment => <Appointment 
+                key={appointment.id} 
                 appointment={appointment}/>)
         }
-
-
-        // return this.props.appointments.map(appointment => <Appointment key={appointment.id} 
-        //     appointment={appointment}
-        //     findLeadName={this.props.findLeadName ? this.props.findLeadName : null}/>)
     }
-
 
     render() { 
         return ( 
