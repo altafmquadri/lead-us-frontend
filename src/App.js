@@ -5,6 +5,7 @@ import NewLeadContainer from './containers/NewLeadContainer';
 
 import {Switch, Route, withRouter } from "react-router-dom";
 import LeadActivityContainer from './containers/LeadActivityContainer';
+import SignupForm from './components/SignupForm';
 
 const api = 'http://localhost:3000/api/v1/users'
 
@@ -132,6 +133,8 @@ class App extends React.Component {
                 <Route path="/new" render={(routerProps) => <NewLeadContainer 
                 addNewLead={this.addNewLead} 
                 {...routerProps}/>}></Route> 
+
+                <Route path="/signup" component={SignupForm}></Route>
 
                 <Route exact path="/" render={(routerProps) =>  <MainContainer 
                 leads={this.state.leads} onLeadClick={this.onLeadClick}

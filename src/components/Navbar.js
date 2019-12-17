@@ -10,6 +10,7 @@ const Navbar = (props) => {
             {<Link to="/profile">Profile</Link>}
             {<Link to="/metrics">Metrics</Link>}
             {<Link to="/signout">Sign Out</Link>}
+            {<Link to="/signup">Sign Up</Link>}
         </div>
     )
 }
