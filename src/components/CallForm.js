@@ -15,6 +15,7 @@ const CallForm = (props) => {
                         <option defaultValue="No Answer" >No Answer</option>
                         <option value="Left Message">Left Message</option>
                         <option value="Call Again">Call Again</option>
+                        <option value="Booked Appointment">Booked Appointment</option>
                     </select>
                 <br/><br/>
 

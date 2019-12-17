@@ -48,6 +48,15 @@ class App extends React.Component {
     });
  }
 
+ addNewAppointment = (newAppointment) => {
+  this.setState(
+    {
+      ...this.state,
+      calls: [...this.state.appointments, newAppointment],
+      clickedLeadAppointments: [...this.state.clickedLeadAppointments, newAppointment]  
+   });
+ }
+
  componentDidMount() {
      return fetch(api).then(res => res.json()).then(res => this.setState(
          { 
@@ -94,6 +103,7 @@ class App extends React.Component {
                 calls={this.state.clickedLeadCalls}
                 clickedLeadAppointments={this.state.clickedLeadAppointments}
                 addNewCall={this.addNewCall}
+                addNewAppointment={this.addNewAppointment}
                 {...routerProps}/> }></Route>
 
                 <Route path="/new" render={(routerProps) => <NewLeadContainer 

@@ -6,7 +6,8 @@ import CallForm from '../components/CallForm'
 import AppointmentsContainer from './AppointmentsContainer';
 import AppointmentForm from '../components/AppointmentForm'
 
-const api = 'http://localhost:3000/api/v1/calls'
+const callsApi = 'http://localhost:3000/api/v1/calls'
+const appointmentsApi = 'http://localhost:3000/api/v1/appointments'
 
 class LeadActivityContainer extends React.Component {
     state = { 
@@ -17,10 +18,11 @@ class LeadActivityContainer extends React.Component {
 
         //for calls
         callForm: false,
-        appointmentForm: true,
+        appointmentForm: false,
         call_status: "No Answer",
         'appointment_made?': false,
         'archive_lead?': false,
+        callsSubmitted: false,
 
         //for appointments
         title: "",
@@ -28,7 +30,7 @@ class LeadActivityContainer extends React.Component {
         start_time: "",
         end_time: "",
         'presentation_made?': false,
-        'sales_made?': false
+        'made_sale?': false
 
      }
 
@@ -40,9 +42,37 @@ class LeadActivityContainer extends React.Component {
             appointmentForm: false,
             call_status: "No Answer",
             'appointment_made?': false,
-            'archive_lead?': false  
+            'archive_lead?': false,
+            callsSubmitted: false,
+
+            title: "",
+            date: "",
+            start_time: "",
+            end_time: "",
+            'presentation_made?': false,
+            'made_sale?': false
         });
      }
+
+     setAppointmentState = () => {
+        this.setState({ 
+           user_id: 1, //hard coded for now
+           lead_id: this.props.lead.id,
+           callForm: false,
+           appointmentForm: true,
+           call_status: "No Answer",
+           'appointment_made?': false,
+           'archive_lead?': false,
+           callsSubmitted: true,
+
+           title: "",
+           date: "",
+           start_time: "",
+           end_time: "",
+           'presentation_made?': false,
+           'made_sale?': false
+       });
+    }
 
      onPhoneClick = () => {
          this.setState(
@@ -67,11 +97,15 @@ class LeadActivityContainer extends React.Component {
         this.setState({ 'presentation_made?': !this.state['presentation_made?']  });
     }
 
+    onToggleSale = () => {
+        this.setState({ 'made_sale?': !this.state['made_sale?']  });
+    }
+
     onFormSubmission = (e) => {
         e.preventDefault()
 
-        if (this.state['appointment_made?']=== false) {
-            fetch(api, {
+        if (this.state['appointment_made?'] === false) {
+            fetch(callsApi, {
                 method: 'POST',
                 headers: {
                     "Content-type": 'application/json',
@@ -86,7 +120,47 @@ class LeadActivityContainer extends React.Component {
                 })
             }).then(resp => resp.json()).then(call => this.props.addNewCall(call))
             this.setInitialState()
+            this.setState({ callsSubmitted: true  });
+
+        } else if (this.state['appointment_made?']) {
+            fetch(callsApi, {
+                method: 'POST',
+                headers: {
+                    "Content-type": 'application/json',
+                    Accepts: 'application/json'
+                },
+                body: JSON.stringify({
+                    user_id: this.state.user_id,
+                    lead_id: this.state.lead_id,
+                    call_status: this.state.call_status,
+                    'appointment_made?': this.state['appointment_made?'],
+                    'archive_lead?': this.state['archive_lead?']
+                })
+            }).then(resp => resp.json()).then(call => this.props.addNewCall(call))
+            this.setAppointmentState()
+            
         }
+    }
+
+    onAppointmentSubmit = () => {
+        fetch(appointmentsApi, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json',
+                Accepts: 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: this.state.user_id,
+                lead_id: this.state.lead_id,
+                title: this.state.title,
+                date: this.state.date,
+                start_time: this.state.start_time,
+                end_time: this.state.end_time,
+                'presentation_made?': this.state['presentation_made?'],
+                'made_sale?': this.state['made_sale?']
+            })
+        }).then(res => res.json()).then(appointment => this.props.addNewAppointment(appointment))
+        this.setInitialState()
     }
 
     partialFormHandler = (e) => {
@@ -102,7 +176,7 @@ class LeadActivityContainer extends React.Component {
                     <CallsContainer calls={this.props.calls} />
                     <AppointmentsContainer clickedLeadAppointments={this.props.clickedLeadAppointments}/>
                 </div>
-                {this.state.callForm ? <CallForm calls={this.props.calls} 
+                {this.state.callForm  && !this.state.appointmentForm ? <CallForm calls={this.props.calls} 
                 formData={this.state}
                 onToggleArchive={this.onToggleArchive}
                 onFormSubmission={this.onFormSubmission}
@@ -112,6 +186,8 @@ class LeadActivityContainer extends React.Component {
                 {this.state.appointmentForm ? <AppointmentForm formData={this.state}
                 partialFormHandler={this.partialFormHandler}
                 onTogglePresentation={this.onTogglePresentation}
+                onToggleSale={this.onToggleSale}
+                onAppointmentSubmit={this.onAppointmentSubmit}
                 /> : null}
             </div>
                 

@@ -6,7 +6,8 @@ const AppointmentForm = (props) => {
         <div className="appointment-form">
             <br/><br/>
 
-            <form className="new-appointment-form">
+            <form className="new-appointment-form"
+            onSubmit={props.onAppointmentSubmit}>
                 <label>Title:
                     <input type="text" 
                     name="title"
@@ -38,33 +39,33 @@ const AppointmentForm = (props) => {
                         type="radio" 
                         name="presentation_made?" 
                         value={props.formData['presentation_made?']} 
-                        checked={props.formData['presentation_made?'] ? true : null}/>True
+                        checked={!!props.formData['presentation_made?'] ? true : null}/>True
                     
                     <input 
                         onChange={props.onTogglePresentation}
                         type="radio" 
                         name="presentation_made?" 
                         value={props.formData['presentation_made?']} 
-                        checked={props.formData['presentation_made?'] ? null : true}/>False
+                        checked={!!props.formData['presentation_made?'] ? null : true}/>False
                 <br/><br/>
 
                 <label>Made Sale:</label>
                     <input 
-                        // onChange={props.onToggleArchive}
+                        onChange={props.onToggleSale}
                         type="radio" 
-                        name="made_sale?" />True
-                        {/* value={props.formData['made_sale?']} 
-                        checked={!!props.formData['made_sale?'] ? true : null} */}
+                        name="made_sale?" 
+                        value={props.formData['made_sale?']} 
+                        checked={!!props.formData['made_sale?'] ? true : null}/>True
                     
                     <input 
-                        // onChange={props.onToggleArchive}
+                        onChange={props.onToggleSale}
                         type="radio" 
-                        name="made_sale??" />False
-                        {/* value={props.formData['made_sale?']} 
-                        checked={!!props.formData['made_sale?'] ? null : true}  */}
+                        name="made_sale?" 
+                        value={props.formData['made_sale?']} 
+                        checked={!!props.formData['made_sale?'] ? null : true} />False
                 <br/><br/>
 
-
+                <input type="submit" value="Submit" />
 
             </form>
         </div>
