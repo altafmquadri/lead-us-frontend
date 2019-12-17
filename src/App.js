@@ -52,7 +52,7 @@ class App extends React.Component {
   this.setState(
     {
       ...this.state,
-      calls: [...this.state.appointments, newAppointment],
+      appointments: [...this.state.appointments, newAppointment],
       clickedLeadAppointments: [...this.state.clickedLeadAppointments, newAppointment]  
    });
  }
