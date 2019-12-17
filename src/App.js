@@ -57,6 +57,27 @@ class App extends React.Component {
    });
  }
 
+ editCallNoApp = (call) => {
+   this.setState(
+     { 
+        ...this.state,
+        calls: [...this.state.calls.map(stateCall => {
+            if (stateCall.id === call.id) {
+              return call
+            } else {
+              return stateCall
+            }
+        })],  
+        clickedLeadCalls: [...this.state.clickedLeadCalls.map(stateCall => {
+          if (stateCall.id === call.id) {
+            return call
+          } else {
+            return stateCall
+          }
+      })]
+    });
+ }
+
  componentDidMount() {
      return fetch(api).then(res => res.json()).then(res => this.setState(
          { 
@@ -104,6 +125,7 @@ class App extends React.Component {
                 clickedLeadAppointments={this.state.clickedLeadAppointments}
                 addNewCall={this.addNewCall}
                 addNewAppointment={this.addNewAppointment}
+                editCallNoApp={this.editCallNoApp}
                 {...routerProps}/> }></Route>
 
                 <Route path="/new" render={(routerProps) => <NewLeadContainer 

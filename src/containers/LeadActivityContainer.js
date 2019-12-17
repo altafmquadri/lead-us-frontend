@@ -7,6 +7,7 @@ import AppointmentsContainer from './AppointmentsContainer';
 import AppointmentForm from '../components/AppointmentForm'
 
 const callsApi = 'http://localhost:3000/api/v1/calls'
+const callsApiUpdate = 'http://localhost:3000/api/v1/calls'
 const appointmentsApi = 'http://localhost:3000/api/v1/appointments'
 
 class LeadActivityContainer extends React.Component {
@@ -30,7 +31,10 @@ class LeadActivityContainer extends React.Component {
         start_time: "",
         end_time: "",
         'presentation_made?': false,
-        'made_sale?': false
+        'made_sale?': false,
+
+        //to get call id in case appointment is not set
+        callId: ''
 
      }
 
@@ -54,6 +58,23 @@ class LeadActivityContainer extends React.Component {
         });
      }
 
+     noAppUpdate = () => {
+         fetch(callsApiUpdate + '/' + this.state.callId, {
+             method: 'PATCH',
+             headers: {
+                 'Content-type': 'application/json',
+                 Accepts: 'application/json'
+             },
+             body: JSON.stringify({
+                 id: this.state.callId,
+                 'appointment_made?': false
+             })
+         }).then(res => res.json()).then(call => {
+             this.props.editCallNoApp(call)
+             this.setInitialState()
+         })
+     }
+
      setAppointmentState = () => {
         this.setState({ 
            user_id: 1, //hard coded for now
@@ -71,6 +92,7 @@ class LeadActivityContainer extends React.Component {
            end_time: "",
            'presentation_made?': false,
            'made_sale?': false
+          
        });
     }
 
@@ -136,9 +158,11 @@ class LeadActivityContainer extends React.Component {
                     'appointment_made?': this.state['appointment_made?'],
                     'archive_lead?': this.state['archive_lead?']
                 })
-            }).then(resp => resp.json()).then(call => this.props.addNewCall(call))
-            this.setAppointmentState()
-            
+            }).then(resp => resp.json()).then(call => {
+                this.props.addNewCall(call)
+                this.setAppointmentState()
+                this.setState({ callId: call.id });
+            })    
         }
     }
 
@@ -187,6 +211,7 @@ class LeadActivityContainer extends React.Component {
                 partialFormHandler={this.partialFormHandler}
                 onTogglePresentation={this.onTogglePresentation}
                 onToggleSale={this.onToggleSale}
+                noAppUpdate={this.noAppUpdate}
                 onAppointmentSubmit={this.onAppointmentSubmit}
                 /> : null}
             </div>
