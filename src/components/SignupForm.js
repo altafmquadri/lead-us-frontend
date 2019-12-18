@@ -33,13 +33,12 @@ class SignupForm extends React.Component {
                     alert(user.errors)
                 } else {
                     this.props.setCurrentUser(user)
-                    this.props.history.push('/')
                 }
             })
         } else {
             alert("Passwords do not match")
         }
-        
+        this.props.history.push('/') 
     }
     
     

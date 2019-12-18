@@ -4,7 +4,7 @@ import Lead from '../components/Lead'
 class LeadsContainer extends React.Component {
     
     renderLeads = () => {
-        if (this.props.leads) { 
+        if (this.props.leads === undefined) return
             return this.props.leads.map(lead => 
                 <Lead key={lead.id} 
                 lead={lead} 
@@ -14,7 +14,7 @@ class LeadsContainer extends React.Component {
             // match={this.props.match}
             // location={this.props.location}
             />)  
-        }
+      
     }
 
     render() { 

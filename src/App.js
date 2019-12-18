@@ -122,6 +122,7 @@ class App extends React.Component {
     //console.log(this.state.currentUser)
     // console.log(this.state.currentUser.leads)
     // console.log(this.state.appointments)
+    console.log(this.state)
 
     if (this.state.loading) {
       return <h1>Loading...</h1>
