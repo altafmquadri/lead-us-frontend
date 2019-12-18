@@ -6,7 +6,7 @@ const Navbar = (props) => {
     console.log(props)
     return (
         <div className="navbar">
-            {props.currentUser === null ? <Link to="/login">Login</Link> : null}
+            {props.currentUser === null && localStorage.user_id === null ? <Link to="/login">Login</Link> : null}
             {props.currentUser ? <Link to="/">{props.currentUser.first_name}</Link>: null}
             {props.currentUser ? <Link to="/new">New Lead</Link>: null}
             {props.currentUser ? <Link to="/profile">Profile</Link>: null}

@@ -118,9 +118,7 @@ class App extends React.Component {
  //End of Functions written to add lead activity ***********************************************************************************
 
  componentDidMount() {
-  if (!this.state.currentUser) {
-    this.props.history.push('/login')
-  }
+
 
   const user_id = localStorage.user_id
   if (user_id) {
@@ -129,8 +127,12 @@ class App extends React.Component {
       headers: {
         "Authorization": user_id
       }
-    }).then(res => res.json()).then(console.log)
+    }).then(res => res.json()).then(user => this.setCurrentUser(user))
   }
+
+  // if (!this.state.currentUser) {
+  //   this.props.history.push('/login')
+  // }
 
   this.setState(
     { 

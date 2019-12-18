@@ -14,7 +14,7 @@ class LeadActivityContainer extends React.Component {
     state = { 
 
         //for both
-        user_id: this.props.currentUser.id, 
+        user_id: '',
         lead_id: this.props.lead.id,
 
         //for calls
@@ -193,9 +193,19 @@ class LeadActivityContainer extends React.Component {
         this.setState({ [e.target.name]: e.target.value  });
     }
 
+    componentDidMount() {
+
+        let newState = (this.props.currentUser === null ? localStorage.user_id :this.props.currentUser.id )
+        console.log("i am newstate:",newState)
+        this.setState({ user_id: newState   });
+    }
+
+    
+
     render() { 
-        console.log('I am from props in leadActCont',this.props)
-        console.log('I am from state in leadActCont',this.state)
+        // console.log('I am from props in leadActCont',this.props)
+        // console.log('I am from state in leadActCont',this.state)
+        console.log("i am localstorage:" ,localStorage.user_id)
         return ( 
             <div className="activity-show-page">
                 <div className="lead-show-page">
