@@ -26,11 +26,11 @@ class LoginForm extends React.Component {
             if (user.errors) {
                 alert(user.errors)
             } else {
-                console.log(user.leads)
+                //console.log(user.leads)
                 this.props.setCurrentUser(user)
             }
         })
-        this.props.history.push('/')
+        
     }
     
     

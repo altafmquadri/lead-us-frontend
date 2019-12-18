@@ -30,26 +30,39 @@ class App extends React.Component {
        leads: user.leads,
        calls: user.calls,
        appointments: user.appointments
-
-      });
+      }, () => this.props.history.push('/'));
  }
+
+ //Functions written to add lead activity ***************************************************************************************
 
  findLeadName = (id) => {
-   let name
-   let lead = this.state.leads.find(lead => lead.id === id)
-   name = `${lead.first_name} ${lead.last_name}`
-   return name
- }
+  let name
+  let lead = this.state.leads.find(lead => lead.id === id)
+  name = `${lead.first_name} ${lead.last_name}`
+  return name
+}
 
- //triggered by new lead form
- addNewLead = (newLead) => {
+  //to point us to the lead show page
+  onLeadClick = (leadData) => {
+    //  console.log("i am the clicked lead", leadData.lead)
+     this.setState(
+       { 
+         clickedLead: leadData.lead,
+         clickedLeadCalls: this.state.calls.filter(calls => calls.lead_id === leadData.lead.id), 
+         clickedLeadAppointments: this.state.appointments.filter(appointments => appointments.lead_id === leadData.lead.id)
+        }, () => {
+       this.props.history.push(`/leads/${leadData.lead.id}`)
+     }) 
+   }
+  //triggered by new lead form
+  addNewLead = (newLead) => {
     this.setState (
       {
         ...this.state, 
         leads:  [...this.state.leads, newLead]
         
       }) 
- }
+  }
 
  addNewCall = (newCall) => {
    this.setState(
@@ -91,6 +104,8 @@ class App extends React.Component {
     });
  }
 
+ //End of Functions written to add lead activity ***********************************************************************************
+
  componentDidMount() {
   if (!this.state.currentUser) {
     this.props.history.push('/login')
@@ -104,25 +119,12 @@ class App extends React.Component {
         }))    
  }
 
- //to point us to the lead show page
- onLeadClick = (leadData) => {
-  //  console.log("i am the clicked lead", leadData.lead)
-   this.setState(
-     { 
-       clickedLead: leadData.lead,
-       clickedLeadCalls: this.state.calls.filter(calls => calls.lead_id === leadData.lead.id), 
-       clickedLeadAppointments: this.state.appointments.filter(appointments => appointments.lead_id === leadData.lead.id)
-      }, () => {
-     this.props.history.push(`/leads/${leadData.lead.id}`)
-   }) 
- }
-
   render() {
     // console.log("i am clicked lead calls",this.state.clickedLeadCalls)
     //console.log(this.state.currentUser)
     // console.log(this.state.currentUser.leads)
     // console.log(this.state.appointments)
-    console.log(this.state)
+    // console.log(this.state)
 
     if (this.state.loading) {
       return <h1>Loading...</h1>
