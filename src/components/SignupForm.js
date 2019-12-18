@@ -33,6 +33,7 @@ class SignupForm extends React.Component {
                     alert(user.errors)
                 } else {
                     this.props.setCurrentUser(user)
+                    this.props.history.push('/')
                 }
             })
         } else {
@@ -43,7 +44,7 @@ class SignupForm extends React.Component {
     
     
     render() { 
-        console.log(this.props)
+        // console.log(this.props)
         return ( 
             <div className="signup-form-div">
                 <form
