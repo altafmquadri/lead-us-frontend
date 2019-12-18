@@ -1,13 +1,13 @@
 import React from 'react';
 import './Navbar.css'
-import { Link } from 'react-router-dom'
+import { Link , Redirect} from 'react-router-dom'
 
 const Navbar = (props) => {
     console.log(props)
     return (
         <div className="navbar">
-            {props.currentUser === null && localStorage.user_id === null ? <Link to="/login">Login</Link> : null}
-            {props.currentUser ? <Link to="/">{props.currentUser.first_name}</Link>: null}
+            {props.currentUser === null || localStorage.user_id === null ? <Link to="/login">Login</Link> : null}
+            {props.currentUser ? <Link to="/">{props.currentUser.first_name}</Link>: <Redirect to='/login' />}
             {props.currentUser ? <Link to="/new">New Lead</Link>: null}
             {props.currentUser ? <Link to="/profile">Profile</Link>: null}
             {props.currentUser ? <Link to="/metrics">Metrics</Link>: null}

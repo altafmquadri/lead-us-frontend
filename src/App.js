@@ -118,7 +118,7 @@ class App extends React.Component {
  //End of Functions written to add lead activity ***********************************************************************************
 
  componentDidMount() {
-
+  //setup for auto_login
 
   const user_id = localStorage.user_id
   if (user_id) {
