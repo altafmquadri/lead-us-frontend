@@ -3,15 +3,16 @@ import './Navbar.css'
 import { Link } from 'react-router-dom'
 
 const Navbar = (props) => {
+    console.log(props)
     return (
         <div className="navbar">
-            {<Link to="/">Home</Link>}
-            {<Link to="/new">New Lead</Link>}
-            {<Link to="/profile">Profile</Link>}
-            {<Link to="/metrics">Metrics</Link>}
-            {<Link to="/login">Login</Link>}
-            {<Link to="/signup">Sign Up</Link>}
-            {<Link to="/signout">Sign Out</Link>}
+            {props.currentUser === null ? <Link to="/login">Login</Link> : null}
+            {props.currentUser ? <Link to="/">{props.currentUser.first_name}</Link>: null}
+            {props.currentUser ? <Link to="/new">New Lead</Link>: null}
+            {props.currentUser ? <Link to="/profile">Profile</Link>: null}
+            {props.currentUser ? <Link to="/metrics">Metrics</Link>: null}
+            {props.currentUser === null ? <Link to="/signup">Sign Up</Link> : null}
+            {props.currentUser ? <Link onClick={props.logoutUser} to="/signout">Sign Out</Link>: null}
         </div>
     )
 }

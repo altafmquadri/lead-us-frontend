@@ -33,6 +33,10 @@ class App extends React.Component {
       }, () => this.props.history.push('/'));
  }
 
+ logoutUser = () => {
+   this.setState({ currentUser: null  }, () => this.props.history.push('/login'));
+ }
+
  //Functions written to add lead activity ***************************************************************************************
 
  findLeadName = (id) => {
@@ -125,6 +129,7 @@ class App extends React.Component {
     // console.log(this.state.currentUser.leads)
     // console.log(this.state.appointments)
     // console.log(this.state)
+    // console.log(this.props, 'I am in App')
 
     if (this.state.loading) {
       return <h1>Loading...</h1>
@@ -133,7 +138,7 @@ class App extends React.Component {
     return (
       <div className="main-page-container">
           <div>
-              <Navbar />
+              <Navbar currentUser={this.state.currentUser} logoutUser={this.logoutUser}/>
               <Switch>
               
   }
