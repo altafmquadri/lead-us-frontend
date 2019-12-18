@@ -8,7 +8,7 @@ import LeadActivityContainer from './containers/LeadActivityContainer';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm'
 
-const api = 'http://localhost:3000/api/v1/users'
+const api = 'http://localhost:3000/api/v1/auto_login'
 
 class App extends React.Component {
 
@@ -30,11 +30,18 @@ class App extends React.Component {
        leads: user.leads,
        calls: user.calls,
        appointments: user.appointments
-      }, () => this.props.history.push('/'));
+      }, () => {
+        localStorage.user_id = user.id
+        this.props.history.push('/')
+      })
  }
 
  logoutUser = () => {
-   this.setState({ currentUser: null  }, () => this.props.history.push('/login'));
+   this.setState({ currentUser: null  }, () => {
+     localStorage.removeItem('user_id')
+     localStorage.clear()
+     this.props.history.push('/login')
+    })
  }
 
  //Functions written to add lead activity ***************************************************************************************
@@ -114,13 +121,32 @@ class App extends React.Component {
   if (!this.state.currentUser) {
     this.props.history.push('/login')
   }
-     return fetch(api).then(res => res.json()).then(res => this.setState(
-         { 
-            clickedLead: [],
-            clickedLeadCalls: [],
-            clickedLeadAppointments: [],
-            loading: false //added for purpose of establishing dynamic routes
-        }))    
+
+  const user_id = localStorage.user_id
+  if (user_id) {
+    
+    fetch(api, {
+      headers: {
+        "Authorization": user_id
+      }
+    }).then(res => res.json()).then(console.log)
+  }
+
+  this.setState(
+    { 
+      loading: false, 
+      clickedLead: [],
+      clickedLeadCalls: [],
+      clickedLeadAppointments: []
+    })
+  
+    //  return fetch(api).then(res => res.json()).then(res => this.setState(
+    //      { 
+    //         clickedLead: [],
+    //         clickedLeadCalls: [],
+    //         clickedLeadAppointments: [],
+    //         loading: false //added for purpose of establishing dynamic routes
+    //     }))    
  }
 
   render() {
