@@ -13,7 +13,6 @@ const api = 'http://localhost:3000/api/v1/users'
 class App extends React.Component {
 
   state = { 
-    // users: [],
     currentUser: null,
     leads: [],
     appointments: [],
@@ -98,14 +97,6 @@ class App extends React.Component {
   }
      return fetch(api).then(res => res.json()).then(res => this.setState(
          { 
-            // users: res.users,
-            // currentUser: res.users[0], //will have to implement some logic to get the current user  
-             //leads: currentUser.leads,
-            // appointments: res.users[0].appointments,
-            // calls: res.users[0].calls,
-            //leads: this.state.currentUser ? this.state.currentUser.leads : [],
-            //appointments: this.state.currentUser ? this.state.currentUser.appointments : null,
-            //calls: this.state.currentUser ? this.state.currentUser.calls : null,
             clickedLead: [],
             clickedLeadCalls: [],
             clickedLeadAppointments: [],
@@ -130,11 +121,7 @@ class App extends React.Component {
     // console.log("i am clicked lead calls",this.state.clickedLeadCalls)
     //console.log(this.state.currentUser)
     // console.log(this.state.currentUser.leads)
-    console.log(this.state.appointments)
-
-    
-      // <Redirect from='/' to='/login'/>
-    
+    // console.log(this.state.appointments)
 
     if (this.state.loading) {
       return <h1>Loading...</h1>

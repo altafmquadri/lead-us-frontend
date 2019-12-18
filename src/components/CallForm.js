@@ -1,7 +1,7 @@
 import React from 'react';
 
 const CallForm = (props) => {
-    console.log(props)
+    // console.log(props)
     return (
         <div className="call-form">
             <br/><br/>
