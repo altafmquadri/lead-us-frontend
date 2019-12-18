@@ -32,7 +32,7 @@ class SignupForm extends React.Component {
                 if(user.errors) {
                     alert(user.errors)
                 } else {
-                    console.log(user)
+                    this.props.setCurrentUser(user)
                 }
             })
         } else {
@@ -43,7 +43,7 @@ class SignupForm extends React.Component {
     
     
     render() { 
-
+        console.log(this.props)
         return ( 
             <div className="signup-form-div">
                 <form

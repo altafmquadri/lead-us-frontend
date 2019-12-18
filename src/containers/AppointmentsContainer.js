@@ -5,19 +5,20 @@ class AppointmentsContainer extends React.Component {
     
     renderAppointments = () => {
         //define whether findLeadName props exist, to apply conditional rendering of appointments to Home Page, and to Lead Activity Page
-    
-        if (this.props.findLeadName) {
+        // if (this.props.appointments) {
+            if (this.props.findLeadName) {
 
-            return this.props.appointments.map(appointment => <Appointment 
-                key={appointment.id} 
-                appointment={appointment}
-                findLeadName={this.props.findLeadName}/>)
+                return this.props.appointments.map(appointment => <Appointment 
+                    key={appointment.id} 
+                    appointment={appointment}
+                    findLeadName={this.props.findLeadName}/>)
 
-        } else if (this.props.clickedLeadAppointments){
-            return this.props.clickedLeadAppointments.map(appointment => <Appointment 
-                key={appointment.id} 
-                appointment={appointment}/>)
-        }
+            } else if (this.props.clickedLeadAppointments){
+                return this.props.clickedLeadAppointments.map(appointment => <Appointment 
+                    key={appointment.id} 
+                    appointment={appointment}/>)
+            }
+        // }
     }
 
     render() { 

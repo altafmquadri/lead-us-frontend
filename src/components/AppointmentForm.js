@@ -66,9 +66,9 @@ const AppointmentForm = (props) => {
                 <br/><br/>
 
                 <input type="submit" value="Submit" />
-                <input type="button" value="Cancel" onClick={props.noAppUpdate} />
 
             </form>
+                <input type="button" value="Cancel" onClick={props.noAppUpdate} />
         </div>
     )
 

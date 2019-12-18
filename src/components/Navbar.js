@@ -9,8 +9,9 @@ const Navbar = (props) => {
             {<Link to="/new">New Lead</Link>}
             {<Link to="/profile">Profile</Link>}
             {<Link to="/metrics">Metrics</Link>}
-            {<Link to="/signout">Sign Out</Link>}
+            {<Link to="/login">Login</Link>}
             {<Link to="/signup">Sign Up</Link>}
+            {<Link to="/signout">Sign Out</Link>}
         </div>
     )
 }

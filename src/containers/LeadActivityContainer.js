@@ -14,7 +14,7 @@ class LeadActivityContainer extends React.Component {
     state = { 
 
         //for both
-        user_id: 1, //hard coded for now
+        user_id: this.props.currentUser.id, 
         lead_id: this.props.lead.id,
 
         //for calls
@@ -40,7 +40,7 @@ class LeadActivityContainer extends React.Component {
 
      setInitialState = () => {
          this.setState({ 
-            user_id: 1, //hard coded for now
+            user_id: this.props.currentUser.id, 
             lead_id: this.props.lead.id,
             callForm: false,
             appointmentForm: false,
@@ -58,7 +58,8 @@ class LeadActivityContainer extends React.Component {
         });
      }
 
-     noAppUpdate = () => {
+     noAppUpdate = (e) => {
+        e.preventDefault()
          fetch(callsApiUpdate + '/' + this.state.callId, {
              method: 'PATCH',
              headers: {
@@ -77,7 +78,7 @@ class LeadActivityContainer extends React.Component {
 
      setAppointmentState = () => {
         this.setState({ 
-           user_id: 1, //hard coded for now
+           user_id: this.props.currentUser.id, 
            lead_id: this.props.lead.id,
            callForm: false,
            appointmentForm: true,
@@ -166,7 +167,8 @@ class LeadActivityContainer extends React.Component {
         }
     }
 
-    onAppointmentSubmit = () => {
+    onAppointmentSubmit = (e) => {
+        e.preventDefault()
         fetch(appointmentsApi, {
             method: 'POST',
             headers: {
@@ -192,7 +194,8 @@ class LeadActivityContainer extends React.Component {
     }
 
     render() { 
-        // console.log('I am from props in leadActCont',this.props)
+        console.log('I am from props in leadActCont',this.props)
+        console.log('I am from state in leadActCont',this.state)
         return ( 
             <div className="activity-show-page">
                 <div className="lead-show-page">

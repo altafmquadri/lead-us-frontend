@@ -6,14 +6,15 @@ import NewLeadContainer from './containers/NewLeadContainer';
 import {Switch, Route, withRouter } from "react-router-dom";
 import LeadActivityContainer from './containers/LeadActivityContainer';
 import SignupForm from './components/SignupForm';
+import LoginForm from './components/LoginForm'
 
 const api = 'http://localhost:3000/api/v1/users'
 
 class App extends React.Component {
 
   state = { 
-    users: [],
-    currentUser: [],
+    // users: [],
+    currentUser: null,
     leads: [],
     appointments: [],
     calls: [],
@@ -21,6 +22,17 @@ class App extends React.Component {
     clickedLeadCalls: [],
     clickedLeadAppointments: [],
     loading: true
+ }
+
+ setCurrentUser = (user) => {
+   this.setState(
+     { 
+       currentUser: user,
+       leads: user.leads,
+       calls: user.calls,
+       appointments: user.appointments
+
+      });
  }
 
  findLeadName = (id) => {
@@ -32,7 +44,7 @@ class App extends React.Component {
 
  //triggered by new lead form
  addNewLead = (newLead) => {
-    this.setState(
+    this.setState (
       {
         ...this.state, 
         leads:  [...this.state.leads, newLead]
@@ -81,19 +93,24 @@ class App extends React.Component {
  }
 
  componentDidMount() {
+  if (!this.state.currentUser) {
+    this.props.history.push('/login')
+  }
      return fetch(api).then(res => res.json()).then(res => this.setState(
          { 
-            users: res.users,
-            currentUser: res.users[0], //will have to implement some logic to get the current user  
-            leads: res.users[0].leads,
-            appointments: res.users[0].appointments,
-            calls: res.users[0].calls,
+            // users: res.users,
+            // currentUser: res.users[0], //will have to implement some logic to get the current user  
+             //leads: currentUser.leads,
+            // appointments: res.users[0].appointments,
+            // calls: res.users[0].calls,
+            //leads: this.state.currentUser ? this.state.currentUser.leads : [],
+            //appointments: this.state.currentUser ? this.state.currentUser.appointments : null,
+            //calls: this.state.currentUser ? this.state.currentUser.calls : null,
             clickedLead: [],
             clickedLeadCalls: [],
             clickedLeadAppointments: [],
             loading: false //added for purpose of establishing dynamic routes
-        }))
-        
+        }))    
  }
 
  //to point us to the lead show page
@@ -111,6 +128,14 @@ class App extends React.Component {
 
   render() {
     // console.log("i am clicked lead calls",this.state.clickedLeadCalls)
+    //console.log(this.state.currentUser)
+    // console.log(this.state.currentUser.leads)
+    console.log(this.state.appointments)
+
+    
+      // <Redirect from='/' to='/login'/>
+    
+
     if (this.state.loading) {
       return <h1>Loading...</h1>
     }
@@ -120,8 +145,10 @@ class App extends React.Component {
           <div>
               <Navbar />
               <Switch>
-
+              
+  }
                 <Route path="/leads/:id" render={(routerProps) => <LeadActivityContainer 
+                currentUser={this.state.currentUser}
                 lead={this.state.clickedLead}
                 calls={this.state.clickedLeadCalls}
                 clickedLeadAppointments={this.state.clickedLeadAppointments}
@@ -130,14 +157,17 @@ class App extends React.Component {
                 editCallNoApp={this.editCallNoApp}
                 {...routerProps}/> }></Route>
 
-                <Route path="/new" render={(routerProps) => <NewLeadContainer 
+                <Route path="/new" render={(routerProps) => <NewLeadContainer
+                currentUser={this.state.currentUser} 
                 addNewLead={this.addNewLead} 
                 {...routerProps}/>}></Route> 
 
-                <Route path="/signup" component={SignupForm}></Route>
+                <Route path="/signup" render={(routerProps) => <SignupForm {...routerProps} setCurrentUser={this.setCurrentUser}/>}></Route>
+
+                <Route path="/login" render={(routerProps) => <LoginForm {...routerProps} setCurrentUser={this.setCurrentUser}/>}></Route>
 
                 <Route exact path="/" render={(routerProps) =>  <MainContainer 
-                leads={this.state.leads} onLeadClick={this.onLeadClick}
+                leads={this.state.leads} onLeadClick={this.onLeadClick} currentUser={this.state.currentUser}
                 appointments={this.state.appointments} findLeadName={this.findLeadName}
                 {...routerProps}/>}></Route>
 

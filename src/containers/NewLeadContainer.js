@@ -6,7 +6,7 @@ const api = 'http://localhost:3000/api/v1/leads'
 class NewLeadContainer extends React.Component {
 
     state = { 
-        currentUser: 1, //hard coded for now, when implementing auth will have current user with id
+        currentUser: this.props.currentUser.id, 
         firstName: "",
         lastName: "",
         street: "",
@@ -20,7 +20,7 @@ class NewLeadContainer extends React.Component {
 
      setInitialState = () => {
          this.setState({ 
-             currentUser: 1,
+             currentUser: this.props.currentUser.id,
              firstName: "",
              lastName: "",
              street: "",
@@ -67,7 +67,8 @@ class NewLeadContainer extends React.Component {
      
 
     render() { 
-        // console.log(this.props)
+        // console.log('I am from New Lead Container props:', this.props)
+        // console.log('I am from New Lead Container state:', this.state)
         return ( 
             <div className="new-lead">
                 <NewLeadForm 
