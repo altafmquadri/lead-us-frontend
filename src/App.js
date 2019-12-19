@@ -53,7 +53,7 @@ class App extends React.Component {
   return name
 }
 
-  //to point us to the lead show page
+//to point us to the lead show page
   onLeadClick = (leadData) => {
     //  console.log("i am the clicked lead", leadData.lead)
      this.setState(
@@ -75,26 +75,27 @@ class App extends React.Component {
       }) 
   }
 
- addNewCall = (newCall) => {
+  //triggered by user clicking on the phone number
+  addNewCall = (newCall) => {
    this.setState(
      {
        ...this.state,
        calls: [...this.state.calls, newCall],
        clickedLeadCalls: [...this.state.clickedLeadCalls, newCall]  
     });
- }
+  }
 
- addNewAppointment = (newAppointment) => {
+  addNewAppointment = (newAppointment) => {
   this.setState(
     {
       ...this.state,
       appointments: [...this.state.appointments, newAppointment],
       clickedLeadAppointments: [...this.state.clickedLeadAppointments, newAppointment]  
    });
- }
+  }
 
- //written for the cancel button on appointment form
- editCallNoApp = (call) => {
+  //written for the cancel button on appointment form
+  editCallNoApp = (call) => {
    this.setState(
      { 
         ...this.state,
@@ -113,7 +114,7 @@ class App extends React.Component {
           }
       })]
     });
- }
+  }
 
  //End of Functions written to add lead activity ***********************************************************************************
 
@@ -130,10 +131,6 @@ class App extends React.Component {
     }).then(res => res.json()).then(user => this.setCurrentUser(user))
   }
 
-  // if (!this.state.currentUser) {
-  //   this.props.history.push('/login')
-  // }
-
   this.setState(
     { 
       loading: false, 
@@ -141,14 +138,7 @@ class App extends React.Component {
       clickedLeadCalls: [],
       clickedLeadAppointments: []
     })
-  
-    //  return fetch(api).then(res => res.json()).then(res => this.setState(
-    //      { 
-    //         clickedLead: [],
-    //         clickedLeadCalls: [],
-    //         clickedLeadAppointments: [],
-    //         loading: false //added for purpose of establishing dynamic routes
-    //     }))    
+    
  }
 
   render() {
@@ -167,9 +157,9 @@ class App extends React.Component {
       <div className="main-page-container">
           <div>
               <Navbar currentUser={this.state.currentUser} logoutUser={this.logoutUser}/>
+
               <Switch>
               
-  }
                 <Route path="/leads/:id" render={(routerProps) => <LeadActivityContainer 
                 currentUser={this.state.currentUser}
                 lead={this.state.clickedLead}

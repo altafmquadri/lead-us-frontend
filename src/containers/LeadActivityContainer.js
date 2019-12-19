@@ -213,6 +213,9 @@ class LeadActivityContainer extends React.Component {
                     <CallsContainer calls={this.props.calls} />
                     <AppointmentsContainer clickedLeadAppointments={this.props.clickedLeadAppointments}/>
                 </div>
+
+                {/* call form is true and appointment form is false just show call form, if appointment 
+                form is true upon submission, do not show the call form */}
                 {this.state.callForm  && !this.state.appointmentForm ? <CallForm calls={this.props.calls} 
                 formData={this.state}
                 onToggleArchive={this.onToggleArchive}
@@ -220,6 +223,7 @@ class LeadActivityContainer extends React.Component {
                 onToggleAppointment={this.onToggleAppointment}
                 onFormChange={this.onFormChange}/> : null }
 
+                {/* appointment form is true just show appoinment form} */}
                 {this.state.appointmentForm ? <AppointmentForm formData={this.state}
                 partialFormHandler={this.partialFormHandler}
                 onTogglePresentation={this.onTogglePresentation}
