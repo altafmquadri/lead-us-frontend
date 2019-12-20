@@ -23,6 +23,7 @@ class App extends React.Component {
     loading: true
  }
 
+ 
  setCurrentUser = (user) => {
    this.setState(
      { 

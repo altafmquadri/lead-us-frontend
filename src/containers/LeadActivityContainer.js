@@ -169,6 +169,11 @@ class LeadActivityContainer extends React.Component {
 
     onAppointmentSubmit = (e) => {
         e.preventDefault()
+        let newStartTime = this.state.date + 'T' + this.state.start_time
+        let newEndTime = this.state.date + 'T' + this.state.end_time
+
+        console.log(newStartTime)
+
         fetch(appointmentsApi, {
             method: 'POST',
             headers: {
@@ -180,8 +185,8 @@ class LeadActivityContainer extends React.Component {
                 lead_id: this.state.lead_id,
                 title: this.state.title,
                 date: this.state.date,
-                start_time: this.state.start_time,
-                end_time: this.state.end_time,
+                start_time: newStartTime,
+                end_time: newEndTime,
                 'presentation_made?': this.state['presentation_made?'],
                 'made_sale?': this.state['made_sale?']
             })
@@ -196,7 +201,7 @@ class LeadActivityContainer extends React.Component {
     componentDidMount() {
 
         let newState = (this.props.currentUser === null ? localStorage.user_id :this.props.currentUser.id )
-        console.log("i am newstate:",newState)
+        // console.log("i am newstate:",newState)
         this.setState({ user_id: newState   });
     }
 
@@ -205,7 +210,7 @@ class LeadActivityContainer extends React.Component {
     render() { 
         // console.log('I am from props in leadActCont',this.props)
         // console.log('I am from state in leadActCont',this.state)
-        console.log("i am localstorage:" ,localStorage.user_id)
+        // console.log("i am localstorage:" ,localStorage.user_id)
         return ( 
             <div className="activity-show-page">
                 <div className="lead-show-page">
