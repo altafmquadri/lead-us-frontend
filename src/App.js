@@ -2,11 +2,11 @@ import React from 'react';
 import Navbar from './components/Navbar'
 import MainContainer from './containers/MainContainer';
 import NewLeadContainer from './containers/NewLeadContainer';
-
-import {Switch, Route, withRouter } from "react-router-dom";
 import LeadActivityContainer from './containers/LeadActivityContainer';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm'
+
+import {Switch, Route, withRouter } from "react-router-dom";
 
 const api = 'http://localhost:3000/api/v1/auto_login'
 
