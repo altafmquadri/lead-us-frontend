@@ -10,7 +10,9 @@ class SignupForm extends React.Component {
         last_name: "",
         company_name: "",
         password: "",
-        password_confirmation: ""
+        password_confirmation: "",
+        latitude: 0,
+        longitude: 0
      }
 
     formHandler = (e) => {
@@ -38,6 +40,31 @@ class SignupForm extends React.Component {
         } else {
             alert("Passwords do not match")
         }
+    }
+
+    componentDidMount() {
+        this.getMyLocation()
+    }
+
+    getMyLocation = () => {
+        const options = {
+            enableHighAccuracy: true,
+            timeout: 5000,
+            maximumAge:0
+        }
+        const success = (position) => {
+            const coordinateObj = position.coords
+            this.setState(
+                { 
+                    latitude: coordinateObj.latitude,  
+                    longitude: coordinateObj.longitude
+                })
+        }
+        const error = (err) => {
+            console.warn(`ERROR'(${err.code})): ${err.message}`)
+        }
+
+        navigator.geolocation.getCurrentPosition(success, error, options)
     }
     
     

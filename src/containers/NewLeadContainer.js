@@ -58,10 +58,15 @@ class NewLeadContainer extends React.Component {
                  beneficiary_information: this.state.beneficiaryInformation,
                  date_of_birth: this.state.dateOfBirth
              })
-         }).then(resp => resp.json()).then(lead => this.props.addNewLead(lead))
-         this.setInitialState()
-         this.props.history.push('/')
-
+         }).then(resp => resp.json()).then(lead => {
+            if (lead.errors) {
+                alert(lead.errors)
+            } else {
+            this.props.addNewLead(lead)
+            this.setInitialState()
+            this.props.history.push('/')
+            }
+         })
      }
 
      
