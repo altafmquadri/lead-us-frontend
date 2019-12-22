@@ -5,6 +5,7 @@ import CallsContainer from './CallsContainer';
 import CallForm from '../components/CallForm'
 import AppointmentsContainer from './AppointmentsContainer';
 import AppointmentForm from '../components/AppointmentForm'
+import Map from './Map'
 
 const callsApi = 'http://localhost:3000/api/v1/calls'
 const callsApiUpdate = 'http://localhost:3000/api/v1/calls'
@@ -236,6 +237,11 @@ class LeadActivityContainer extends React.Component {
                 noAppUpdate={this.noAppUpdate}
                 onAppointmentSubmit={this.onAppointmentSubmit}
                 /> : null}
+
+                <div className="map-div">
+                    <Map lead={this.props.lead} user={this.props.currentUser}/>
+                </div>
+
             </div>
                 
             );

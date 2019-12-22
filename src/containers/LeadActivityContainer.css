@@ -3,3 +3,9 @@
     justify-content: space-around;
     border: solid black 1px;
 }
+
+.map-div {
+    margin: 1px;
+    padding: 5px;
+    border: solid black 1px;
+}
