@@ -37,10 +37,10 @@ class LeadActivityContainer extends React.Component {
         //to get call id in case appointment is not set
         callId: ''
 
-     }
+    }
 
-     setInitialState = () => {
-         this.setState({ 
+    setInitialState = () => {
+        this.setState({ 
             user_id: this.props.currentUser.id, 
             lead_id: this.props.lead.id,
             callForm: false,
@@ -57,53 +57,53 @@ class LeadActivityContainer extends React.Component {
             'presentation_made?': false,
             'made_sale?': false
         });
-     }
-
-     noAppUpdate = (e) => {
-        e.preventDefault()
-         fetch(callsApiUpdate + '/' + this.state.callId, {
-             method: 'PATCH',
-             headers: {
-                 'Content-type': 'application/json',
-                 Accepts: 'application/json'
-             },
-             body: JSON.stringify({
-                 id: this.state.callId,
-                 'appointment_made?': false
-             })
-         }).then(res => res.json()).then(call => {
-             this.props.editCallNoApp(call)
-             this.setInitialState()
-         })
-     }
-
-     setAppointmentState = () => {
-        this.setState({ 
-           user_id: this.props.currentUser.id, 
-           lead_id: this.props.lead.id,
-           callForm: false,
-           appointmentForm: true,
-           call_status: "No Answer",
-           'appointment_made?': false,
-           'archive_lead?': false,
-           callsSubmitted: true,
-
-           title: "",
-           date: "",
-           start_time: "",
-           end_time: "",
-           'presentation_made?': false,
-           'made_sale?': false
-          
-       });
     }
 
-     onPhoneClick = () => {
-         this.setState(
-             { callForm: !this.state.callForm,
+    noAppUpdate = (e) => {
+        e.preventDefault()
+        fetch(callsApiUpdate + '/' + this.state.callId, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json',
+                Accepts: 'application/json'
+            },
+            body: JSON.stringify({
+                id: this.state.callId,
+                'appointment_made?': false
+            })
+        }).then(res => res.json()).then(call => {
+            this.props.editCallNoApp(call)
+            this.setInitialState()
+        })
+    }
+
+        setAppointmentState = () => {
+        this.setState({ 
+            user_id: this.props.currentUser.id, 
+            lead_id: this.props.lead.id,
+            callForm: false,
+            appointmentForm: true,
+            call_status: "No Answer",
+            'appointment_made?': false,
+            'archive_lead?': false,
+            callsSubmitted: true,
+
+            title: "",
+            date: "",
+            start_time: "",
+            end_time: "",
+            'presentation_made?': false,
+            'made_sale?': false
+            
+        });
+    }
+
+        onPhoneClick = () => {
+            this.setState(
+                { callForm: !this.state.callForm,
                 lead_id: this.props.lead.id
             });
-     }
+        }
 
     onFormChange = (e) => {
         this.setState({ call_status: e.target.value  });
@@ -249,4 +249,3 @@ class LeadActivityContainer extends React.Component {
     }
     
     export default LeadActivityContainer;
-   

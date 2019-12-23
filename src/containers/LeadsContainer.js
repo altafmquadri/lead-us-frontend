@@ -14,7 +14,6 @@ class LeadsContainer extends React.Component {
             // match={this.props.match}
             // location={this.props.location}
             />)  
-      
     }
 
     render() { 
@@ -26,8 +25,7 @@ class LeadsContainer extends React.Component {
                     {this.renderLeads()}
                 </ul>
             </div>
-         );
-     }
+        );
+    }
 }
- 
 export default LeadsContainer;

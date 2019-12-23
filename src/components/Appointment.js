@@ -9,8 +9,7 @@ const Appointment = (props) => {
     return (
         <div className="appointment">
             {selectRender()}
-         </div>
-         
+        </div>
     )
 }
 

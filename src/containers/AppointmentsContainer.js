@@ -28,8 +28,8 @@ class AppointmentsContainer extends React.Component {
                 <h1>Appointments</h1>
                 {this.renderAppointments()}
             </div>
-         );
+        );
     }
 }
- 
+
 export default AppointmentsContainer;

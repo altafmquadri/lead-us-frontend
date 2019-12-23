@@ -9,7 +9,7 @@ class LoginForm extends React.Component {
         password: "",
         latitude: 0.0,
         longitude: 0.0
-     }
+    }
 
     formHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value }, () => this.getMyLocation)
@@ -87,8 +87,8 @@ class LoginForm extends React.Component {
                 <input type="submit" value="Submit" />  
                 </form>
             </div>
-         );
+        );
     }
 }
- 
+
 export default LoginForm;

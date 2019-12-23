@@ -4,9 +4,8 @@ const Lead = (props) => {
     // console.log(props)
     return (
         <div className="lead">
-         <li onClick={() => props.onLeadClick(props)}>{props.lead.first_name}</li>   
-         </div>
-         
+        <li onClick={() => props.onLeadClick(props)}>{props.lead.first_name}</li>   
+        </div>
     )
 }
 

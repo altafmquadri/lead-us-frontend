@@ -21,33 +21,33 @@ class App extends React.Component {
     clickedLeadCalls: [],
     clickedLeadAppointments: [],
     loading: true
- }
+}
 
- 
- setCurrentUser = (user) => {
-   this.setState(
-     { 
-       currentUser: user,
-       leads: user.leads,
-       calls: user.calls,
-       appointments: user.appointments
-      }, () => {
-        localStorage.user_id = user.id
-        this.props.history.push('/')
-      })
- }
 
- logoutUser = () => {
-   this.setState({ currentUser: null  }, () => {
-     localStorage.removeItem('user_id')
-     localStorage.clear()
-     this.props.history.push('/login')
+setCurrentUser = (user) => {
+  this.setState(
+    { 
+      currentUser: user,
+      leads: user.leads,
+      calls: user.calls,
+      appointments: user.appointments
+    }, () => {
+      localStorage.user_id = user.id
+      this.props.history.push('/')
     })
- }
+}
 
- //Functions written to add lead activity ***************************************************************************************
+logoutUser = () => {
+  this.setState({ currentUser: null  }, () => {
+    localStorage.removeItem('user_id')
+    localStorage.clear()
+    this.props.history.push('/login')
+  })
+}
 
- findLeadName = (id) => {
+//Functions written to add lead activity ***************************************************************************************
+
+findLeadName = (id) => {
   let name
   let lead = this.state.leads.find(lead => lead.id === id)
   name = `${lead.first_name} ${lead.last_name}`
@@ -57,15 +57,15 @@ class App extends React.Component {
 //to point us to the lead show page
   onLeadClick = (leadData) => {
     //  console.log("i am the clicked lead", leadData.lead)
-     this.setState(
-       { 
-         clickedLead: leadData.lead,
-         clickedLeadCalls: this.state.calls.filter(calls => calls.lead_id === leadData.lead.id), 
-         clickedLeadAppointments: this.state.appointments.filter(appointments => appointments.lead_id === leadData.lead.id)
-        }, () => {
-       this.props.history.push(`/leads/${leadData.lead.id}`)
-     }) 
-   }
+    this.setState(
+      { 
+        clickedLead: leadData.lead,
+        clickedLeadCalls: this.state.calls.filter(calls => calls.lead_id === leadData.lead.id), 
+        clickedLeadAppointments: this.state.appointments.filter(appointments => appointments.lead_id === leadData.lead.id)
+      }, () => {
+      this.props.history.push(`/leads/${leadData.lead.id}`)
+    }) 
+  }
   //triggered by new lead form
   addNewLead = (newLead) => {
     this.setState (
@@ -78,11 +78,11 @@ class App extends React.Component {
 
   //triggered by user clicking on the phone number
   addNewCall = (newCall) => {
-   this.setState(
-     {
-       ...this.state,
-       calls: [...this.state.calls, newCall],
-       clickedLeadCalls: [...this.state.clickedLeadCalls, newCall]  
+  this.setState(
+    {
+      ...this.state,
+      calls: [...this.state.calls, newCall],
+      clickedLeadCalls: [...this.state.clickedLeadCalls, newCall]  
     });
   }
 
@@ -92,13 +92,13 @@ class App extends React.Component {
       ...this.state,
       appointments: [...this.state.appointments, newAppointment],
       clickedLeadAppointments: [...this.state.clickedLeadAppointments, newAppointment]  
-   });
+    });
   }
 
   //written for the cancel button on appointment form
   editCallNoApp = (call) => {
-   this.setState(
-     { 
+    this.setState(
+      { 
         ...this.state,
         calls: [...this.state.calls.map(stateCall => {
             if (stateCall.id === call.id) {
@@ -119,7 +119,7 @@ class App extends React.Component {
 
  //End of Functions written to add lead activity ***********************************************************************************
 
- componentDidMount() {
+componentDidMount() {
   //setup for auto_login
 
   const user_id = localStorage.user_id
@@ -140,7 +140,7 @@ class App extends React.Component {
       clickedLeadAppointments: []
     })
     
- }
+}
 
   render() {
     // console.log("i am clicked lead calls",this.state.clickedLeadCalls)

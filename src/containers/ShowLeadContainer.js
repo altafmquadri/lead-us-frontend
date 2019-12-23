@@ -11,6 +11,4 @@ const ShowLeadContainer = (props) => {
         </div>
     )
 }
-
-
 export default ShowLeadContainer;

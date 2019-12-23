@@ -11,8 +11,8 @@ class Map extends Component {
         viewport: {
             width: 980,
             height: 350,
-            latitude: 40.7577,
-            longitude: -72.4376,
+            latitude: 0,
+            longitude: 0,
             zoom: 11
         },
         showDirections: false
@@ -116,14 +116,14 @@ class Map extends Component {
                 //turn instructions here
                 const instructions = document.getElementById('instructions')
                 const steps = data.legs[0].steps
-                console.log(steps)
+                // console.log(steps)
                 
                 const tripInstructions = []
                 for (let i = 0; i < steps.length; i++) {
                     tripInstructions.push('<li>' + steps[i].maneuver.instruction + '</li>')
                     instructions.innerHTML = '<br><span class="duration">Trip duration: ' + Math.floor(data.duration / 60) + ' min </span>' + tripInstructions.join('')
                 }
-                console.log(tripInstructions)
+                // console.log(tripInstructions)
             }) //end fetch
         } //end function getRoute
         

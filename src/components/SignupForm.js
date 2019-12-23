@@ -13,7 +13,7 @@ class SignupForm extends React.Component {
         password_confirmation: "",
         latitude: 0,
         longitude: 0
-     }
+    }
 
     formHandler = (e) => {
         this.setState({ [e.target.name]: e.target.value });
@@ -119,8 +119,8 @@ class SignupForm extends React.Component {
                 <input type="submit" value="Submit" />  
             </form>
             </div>
-         );
+        );
     }
 }
- 
+
 export default SignupForm;
