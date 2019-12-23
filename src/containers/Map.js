@@ -51,8 +51,6 @@ class Map extends Component {
         this.setState({viewport})
     }
 
-    
-
     componentDidMount() {
         this.getLeadLocation()
         this.initializeMapForDirections()
@@ -64,6 +62,9 @@ class Map extends Component {
         let userLat = parseFloat(this.props.user.latitude)
         let clientLon = parseFloat(this.props.lead.longitude)
         let clientLat = parseFloat(this.props.lead.latitude)
+
+        // if address is faulty 
+        if (clientLon === 0 && clientLat === 0) return
 
         const map = this.reactMap.getMap()
         const start = [userLon, userLat]

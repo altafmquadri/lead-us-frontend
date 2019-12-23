@@ -4,7 +4,9 @@ import MainContainer from './containers/MainContainer';
 import NewLeadContainer from './containers/NewLeadContainer';
 import LeadActivityContainer from './containers/LeadActivityContainer';
 import SignupForm from './components/SignupForm';
-import LoginForm from './components/LoginForm'
+import LoginForm from './components/LoginForm';
+import Profile from './containers/Profile'
+import Metrics from './containers/Metrics'
 
 import {Switch, Route, withRouter } from "react-router-dom";
 
@@ -170,6 +172,9 @@ componentDidMount() {
                 addNewAppointment={this.addNewAppointment}
                 editCallNoApp={this.editCallNoApp}
                 {...routerProps}/> }></Route>
+
+                <Route path="/profile" render={(routerProps) => <Profile {...routerProps} currentUser={this.state.currentUser}/>}></Route>
+                <Route path="/metrics" render={(routerProps) => <Metrics {...routerProps} currentUser={this.state.currentUser}/>}></Route>
 
                 <Route path="/new" render={(routerProps) => <NewLeadContainer
                 currentUser={this.state.currentUser} 
