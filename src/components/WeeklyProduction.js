@@ -1,5 +1,4 @@
 import React from 'react';
-import moment from 'moment'
 import { Polar } from 'react-chartjs-2'
 
 const WeeklyProduction = (props) => {

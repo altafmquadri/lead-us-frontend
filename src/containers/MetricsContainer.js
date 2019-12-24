@@ -1,7 +1,7 @@
 import React from 'react';
 import moment from 'moment'
-import WeeklyAppointmentsMetric from './WeeklyAppointmentsMetric';
-import WeeklyProduction from './WeeklyProduction';
+import WeeklyAppointmentsMetric from '../components/WeeklyAppointmentsMetric';
+import WeeklyProduction from '../components/WeeklyProduction';
 
 class MetricsContainer extends React.Component {
     state = { 
@@ -27,7 +27,7 @@ class MetricsContainer extends React.Component {
                 
             }, () => this.setState({ presentations: this.getWeeklyPresentations() }))
 
-            
+
             let newDates, filteredAppointmentDatesByWeek
             //take all appointments
             newDates = this.props.appointments.map(appointment => appointment.date)
