@@ -174,7 +174,10 @@ componentDidMount() {
                 {...routerProps}/> }></Route>
 
                 <Route path="/profile" render={(routerProps) => <Profile {...routerProps} currentUser={this.state.currentUser}/>}></Route>
-                <Route path="/metrics" render={(routerProps) => <Metrics {...routerProps} currentUser={this.state.currentUser}/>}></Route>
+                <Route path="/metrics" render={(routerProps) => <Metrics 
+                  {...routerProps} 
+                  currentUser={this.state.currentUser}
+                  appointments={this.state.appointments}/>}></Route>
 
                 <Route path="/new" render={(routerProps) => <NewLeadContainer
                 currentUser={this.state.currentUser} 

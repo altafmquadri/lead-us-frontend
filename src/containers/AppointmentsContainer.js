@@ -1,6 +1,7 @@
 import React from 'react';
 import Appointment from '../components/Appointment'
 
+
 class AppointmentsContainer extends React.Component {
     
     renderAppointments = () => {

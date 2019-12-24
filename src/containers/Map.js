@@ -52,8 +52,8 @@ class Map extends Component {
     }
 
     componentDidMount() {
-        this.getLeadLocation()
-        this.initializeMapForDirections()
+        // this.getLeadLocation()
+        // this.initializeMapForDirections()
     }
     
     initializeMapForDirections = () => {
@@ -182,35 +182,35 @@ class Map extends Component {
         getRoute(start, end)
     } //end initialize map for directions
 
-    render() { 
-        return ( 
-            <div className="map">
-                <div onMouseLeave={this.showDirections} 
-                style={{display: this.state.showDirections ? 'block' : 'none'}} 
-                id="instructions"></div>
-                <ReactMapGL
-                    mapboxApiAccessToken={TOKEN}
-                    mapStyle='mapbox://styles/mapbox/navigation-guidance-day-v4'
-                    {...this.state.viewport}
-                    onViewportChange={(viewport) => this.setState({viewport})}
-                    ref={(reactMap) => this.reactMap = reactMap}>
+    render() {  return (null) //suppressing for a while
+    //     return ( 
+    //         <div className="map">
+    //             <div onMouseLeave={this.showDirections} 
+    //             style={{display: this.state.showDirections ? 'block' : 'none'}} 
+    //             id="instructions"></div>
+    //             <ReactMapGL
+    //                 mapboxApiAccessToken={TOKEN}
+    //                 mapStyle='mapbox://styles/mapbox/navigation-guidance-day-v4'
+    //                 {...this.state.viewport}
+    //                 onViewportChange={(viewport) => this.setState({viewport})}
+    //                 ref={(reactMap) => this.reactMap = reactMap}>
 
-                    <button onClick={this.getPositions}>Get Positions</button>
-                    <button onClick={this.initializeMapForDirections}>Show Route</button>
-                    <button onClick={this.showDirections}>Get Directions</button>
+    //                 <button onClick={this.getPositions}>Get Positions</button>
+    //                 <button onClick={this.initializeMapForDirections}>Show Route</button>
+    //                 <button onClick={this.showDirections}>Get Directions</button>
 
-                        <Fragment>
-                            <Marker latitude={parseFloat(this.props.lead.latitude)} longitude={parseFloat(this.props.lead.longitude)}>
-                                Client
-                            </Marker>
-                            <Marker latitude={parseFloat(this.props.user.latitude)} longitude={parseFloat(this.props.user.longitude)}>
-                                You
-                            </Marker>
-                        </Fragment>
+    //                     <Fragment>
+    //                         <Marker latitude={parseFloat(this.props.lead.latitude)} longitude={parseFloat(this.props.lead.longitude)}>
+    //                             Client
+    //                         </Marker>
+    //                         <Marker latitude={parseFloat(this.props.user.latitude)} longitude={parseFloat(this.props.user.longitude)}>
+    //                             You
+    //                         </Marker>
+    //                     </Fragment>
 
-                </ReactMapGL>
-            </div>
-        )
+    //             </ReactMapGL>
+    //         </div>
+    //     )
     }
 }
 
