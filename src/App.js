@@ -6,7 +6,7 @@ import LeadActivityContainer from './containers/LeadActivityContainer';
 import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import Profile from './containers/Profile'
-import Metrics from './containers/Metrics'
+import MetricsContainer from './containers/MetricsContainer'
 
 import {Switch, Route, withRouter } from "react-router-dom";
 
@@ -196,7 +196,7 @@ componentDidMount() {
                 {...routerProps}/> }></Route>
 
                 <Route path="/profile" render={(routerProps) => <Profile {...routerProps} currentUser={this.state.currentUser}/>}></Route>
-                <Route path="/metrics" render={(routerProps) => <Metrics 
+                <Route path="/metrics" render={(routerProps) => <MetricsContainer
                   {...routerProps} 
                   currentUser={this.state.currentUser}
                   appointments={this.state.appointments}/>}></Route>

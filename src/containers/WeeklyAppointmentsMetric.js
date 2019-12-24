@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import moment from 'moment'
 import { Line } from 'react-chartjs-2'
 
-class Metrics extends Component {
+class WeeklyAppointmentsMetric extends Component {
     state = { 
         currentUser: this.props.currentUser,
         currentDate: moment(),
@@ -99,25 +99,24 @@ class Metrics extends Component {
        
        
         return ( 
-            <div className="metrics-page">
-                <h1>Metrics</h1>
-                <Line 
-                    data={this.state.data}
-                    options={{
-                        scales: {
-                            yAxes: [{
-                                display: true,
-                                ticks: {
-                                    beginAtZero: true,
-                                    stepSize: 1
-                                }
-                            }]
-                        }
-                    }}
-                />
-            </div>
+                <div className="weekly-appointments-metric">
+                    <Line 
+                        data={this.state.data}
+                        options={{
+                            scales: {
+                                yAxes: [{
+                                    display: true,
+                                    ticks: {
+                                        beginAtZero: true,
+                                        stepSize: 1
+                                    }
+                                }]
+                            }
+                        }}
+                    />
+                </div>
         );
     }
 }
 
-export default Metrics;
+export default WeeklyAppointmentsMetric;
