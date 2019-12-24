@@ -18,7 +18,8 @@ class AppointmentsContainer extends React.Component {
     
                 } else if (this.props.clickedLeadAppointments){
                     return this.props.clickedLeadAppointments.map(appointment => <Appointment 
-                        key={appointment.id} 
+                        key={appointment.id}
+                        onEditAppointmentClick={this.props.onEditAppointmentClick}
                         appointment={appointment}/>)
                 }
     }

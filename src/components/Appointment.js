@@ -10,7 +10,7 @@ const Appointment = (props) => {
             return <li>{`${props.appointment.title} with ${props.findLeadName(props.appointment.lead_id)}`}</li>
         } else {
             return (
-            <h3>{props.appointment.title}</h3>
+            <h3 onClick={() => props.onEditAppointmentClick(props)}>{props.appointment.title}</h3>
             )
         }
     }

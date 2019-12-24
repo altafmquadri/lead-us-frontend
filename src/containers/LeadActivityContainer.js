@@ -6,6 +6,7 @@ import CallForm from '../components/CallForm'
 import AppointmentsContainer from './AppointmentsContainer';
 import AppointmentForm from '../components/AppointmentForm'
 import Map from './Map'
+import AppointmentUpdateForm from '../components/AppointmentUpdateForm';
 
 const callsApi = 'http://localhost:3000/api/v1/calls'
 const callsApiUpdate = 'http://localhost:3000/api/v1/calls'
@@ -35,7 +36,10 @@ class LeadActivityContainer extends React.Component {
         'made_sale?': false,
 
         //to get call id in case appointment is not set
-        callId: ''
+        callId: '',
+
+        //edit appointment form
+        editAppointment: false
 
     }
 
@@ -98,12 +102,17 @@ class LeadActivityContainer extends React.Component {
         });
     }
 
-        onPhoneClick = () => {
-            this.setState(
-                { callForm: !this.state.callForm,
-                lead_id: this.props.lead.id
-            });
-        }
+    onPhoneClick = () => {
+        this.setState(
+            { callForm: !this.state.callForm,
+            lead_id: this.props.lead.id
+        });
+    }
+
+    onEditAppointmentClick = (appointment) => {
+        this.setState({ editAppointment: !this.state.editAppointment })
+        console.log(appointment)
+    } 
 
     onFormChange = (e) => {
         this.setState({ call_status: e.target.value  });
@@ -217,7 +226,9 @@ class LeadActivityContainer extends React.Component {
                 <div className="lead-show-page">
                     <ShowLeadContainer lead={this.props.lead} onPhoneClick={this.onPhoneClick}/>
                     <CallsContainer calls={this.props.calls} />
-                    <AppointmentsContainer clickedLeadAppointments={this.props.clickedLeadAppointments}/>
+                    <AppointmentsContainer 
+                    clickedLeadAppointments={this.props.clickedLeadAppointments}
+                    onEditAppointmentClick={this.onEditAppointmentClick}/>
                 </div>
 
                 {/* call form is true and appointment form is false just show call form, if appointment 
@@ -232,11 +243,18 @@ class LeadActivityContainer extends React.Component {
                 {/* appointment form is true just show appoinment form} */}
                 {this.state.appointmentForm ? <AppointmentForm formData={this.state}
                 partialFormHandler={this.partialFormHandler}
-                onTogglePresentation={this.onTogglePresentation}
-                onToggleSale={this.onToggleSale}
+                
                 noAppUpdate={this.noAppUpdate}
                 onAppointmentSubmit={this.onAppointmentSubmit}
                 /> : null}
+
+                {/* edit appointment form */}
+                {this.state.editAppointment ? <AppointmentUpdateForm
+                formData={this.state}
+                onTogglePresentation={this.onTogglePresentation}
+                onToggleSale={this.onToggleSale}
+                editTheAppointment={this.props.editTheAppointment}
+                /> :null}
 
                 <div className="map-div">
                     <Map lead={this.props.lead} user={this.props.currentUser}/>

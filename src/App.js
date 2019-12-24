@@ -97,6 +97,27 @@ findLeadName = (id) => {
     });
   }
 
+  editTheAppointment = (appointment) => {
+    this.setState(
+      { 
+        ...this.state,
+        appointments: [...this.state.appointments.map(stateAppointment => {
+          if (stateAppointment.id === appointment.id) {
+            return appointment
+          } else {
+            return stateAppointment
+          }
+        })],
+        clickedLeadAppointments: [...this.state.clickedLeadAppointments.map(stateAppointment => {
+          if (stateAppointment.id === appointment.id) {
+            return appointment
+          } else {
+            return stateAppointment
+          }
+        })]
+      })
+  }
+
   //written for the cancel button on appointment form
   editCallNoApp = (call) => {
     this.setState(
@@ -171,6 +192,7 @@ componentDidMount() {
                 addNewCall={this.addNewCall}
                 addNewAppointment={this.addNewAppointment}
                 editCallNoApp={this.editCallNoApp}
+                editTheAppointment={this.editTheAppointment}
                 {...routerProps}/> }></Route>
 
                 <Route path="/profile" render={(routerProps) => <Profile {...routerProps} currentUser={this.state.currentUser}/>}></Route>
