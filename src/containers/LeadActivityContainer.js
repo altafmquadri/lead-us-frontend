@@ -32,14 +32,15 @@ class LeadActivityContainer extends React.Component {
         date: "",
         start_time: "",
         end_time: "",
-        'presentation_made?': false,
-        'made_sale?': false,
+        // 'presentation_made?': false,
+        // 'made_sale?': false,
 
         //to get call id in case appointment is not set
         callId: '',
 
         //edit appointment form
-        editAppointment: false
+        editAppointment: false,
+        clickedEditAppointment: ''
 
     }
 
@@ -58,9 +59,13 @@ class LeadActivityContainer extends React.Component {
             date: "",
             start_time: "",
             end_time: "",
-            'presentation_made?': false,
-            'made_sale?': false
+            // 'presentation_made?': false,
+            // 'made_sale?': false
         });
+    }
+
+    editAppointmentFormAfterSubmit = () => {
+        this.setState({ editAppointment: !this.state.editAppointment });
     }
 
     noAppUpdate = (e) => {
@@ -96,8 +101,8 @@ class LeadActivityContainer extends React.Component {
             date: "",
             start_time: "",
             end_time: "",
-            'presentation_made?': false,
-            'made_sale?': false
+            // 'presentation_made?': false,
+            // 'made_sale?': false
             
         });
     }
@@ -110,8 +115,12 @@ class LeadActivityContainer extends React.Component {
     }
 
     onEditAppointmentClick = (appointment) => {
-        this.setState({ editAppointment: !this.state.editAppointment })
-        console.log(appointment)
+        this.setState(
+            { 
+                editAppointment: !this.state.editAppointment,
+                clickedEditAppointment: appointment 
+            })
+        // console.log(appointment)
     } 
 
     onFormChange = (e) => {
@@ -124,14 +133,6 @@ class LeadActivityContainer extends React.Component {
 
     onToggleAppointment = () => {
         this.setState({ 'appointment_made?': !this.state['appointment_made?']  });
-    }
-
-    onTogglePresentation = () => {
-        this.setState({ 'presentation_made?': !this.state['presentation_made?']  });
-    }
-
-    onToggleSale = () => {
-        this.setState({ 'made_sale?': !this.state['made_sale?']  });
     }
 
     onFormSubmission = (e) => {
@@ -197,8 +198,8 @@ class LeadActivityContainer extends React.Component {
                 date: this.state.date,
                 start_time: newStartTime,
                 end_time: newEndTime,
-                'presentation_made?': this.state['presentation_made?'],
-                'made_sale?': this.state['made_sale?']
+                // 'presentation_made?': this.state['presentation_made?'],
+                // 'made_sale?': this.state['made_sale?']
             })
         }).then(res => res.json()).then(appointment => this.props.addNewAppointment(appointment))
         this.setInitialState()
@@ -250,10 +251,12 @@ class LeadActivityContainer extends React.Component {
 
                 {/* edit appointment form */}
                 {this.state.editAppointment ? <AppointmentUpdateForm
-                formData={this.state}
-                onTogglePresentation={this.onTogglePresentation}
-                onToggleSale={this.onToggleSale}
+                // formData={this.state}
+                // onTogglePresentation={this.onTogglePresentation}
+                // onToggleSale={this.onToggleSale}
                 editTheAppointment={this.props.editTheAppointment}
+                editAppointmentFormAfterSubmit={this.editAppointmentFormAfterSubmit}
+                clickedEditAppointment={this.state.clickedEditAppointment}
                 /> :null}
 
                 <div className="map-div">
