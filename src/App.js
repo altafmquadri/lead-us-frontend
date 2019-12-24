@@ -169,7 +169,7 @@ componentDidMount() {
     // console.log("i am clicked lead calls",this.state.clickedLeadCalls)
     //console.log(this.state.currentUser)
     // console.log(this.state.currentUser.leads)
-    console.log(this.state.appointments)
+    // console.log(this.state.appointments)
     // console.log(this.state)
     // console.log(this.props, 'I am in App')
 

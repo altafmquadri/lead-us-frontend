@@ -41,8 +41,8 @@ class AppointmentUpdateForm extends React.Component {
 
 
     render () {
-        console.log('i am state ',this.state.appointment.id)
-        console.log('i am props ',this.props)
+        // console.log('i am state ',this.state.appointment.id)
+        // console.log('i am props ',this.props)
         // console.log(this.props.clickedEditAppointment)
         
         return (
