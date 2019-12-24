@@ -87,7 +87,7 @@ class WeeklyAppointmentsMetric extends Component {
 
     render() {
         
-        console.log('i am the state ',this.state)
+        // console.log('i am the state ',this.state)
         // console.log('i am the daysOfWeek ',this.state.daysOfWeek[0])
         // console.log(this.state.currentDate.toDate())
         
@@ -100,6 +100,7 @@ class WeeklyAppointmentsMetric extends Component {
        
         return ( 
                 <div className="weekly-appointments-metric">
+                    <h2>Weekly Appointments</h2>
                     <Line 
                         data={this.state.data}
                         options={{

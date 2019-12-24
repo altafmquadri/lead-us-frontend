@@ -1,5 +1,6 @@
 import React from 'react';
 import WeeklyAppointmentsMetric from './WeeklyAppointmentsMetric';
+import WeeklyProduction from './WeeklyProduction';
 
 class MetricsContainer extends React.Component {
     state = { 
@@ -16,12 +17,19 @@ class MetricsContainer extends React.Component {
     }
 
     render() { 
+        // console.log(this.state.currentUser)
         return ( 
+            <div>
+
+            
             <div className="metrics-page">
                 <h1>Metrics</h1>
+            
                 <WeeklyAppointmentsMetric currentUser={this.state.currentUser}
                     appointments={this.props.appointments}/>
-
+            </div>
+                <WeeklyProduction currentUser={this.state.currentUser}
+                appointments={this.state.appointments}/>
             </div>
         );
     }
