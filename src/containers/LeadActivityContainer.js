@@ -59,8 +59,8 @@ class LeadActivityContainer extends React.Component {
             date: "",
             start_time: "",
             end_time: "",
-            // 'presentation_made?': false,
-            // 'made_sale?': false
+            editAppointment: false,
+            clickedEditAppointment: ''
         });
     }
 
@@ -101,15 +101,13 @@ class LeadActivityContainer extends React.Component {
             date: "",
             start_time: "",
             end_time: "",
-            // 'presentation_made?': false,
-            // 'made_sale?': false
-            
         });
     }
 
     onPhoneClick = () => {
         this.setState(
-            { callForm: !this.state.callForm,
+        { 
+            callForm: !this.state.callForm,
             lead_id: this.props.lead.id
         });
     }
@@ -120,7 +118,6 @@ class LeadActivityContainer extends React.Component {
                 editAppointment: !this.state.editAppointment,
                 clickedEditAppointment: appointment 
             })
-        // console.log(appointment)
     } 
 
     onFormChange = (e) => {
@@ -183,8 +180,6 @@ class LeadActivityContainer extends React.Component {
         let newStartTime = this.state.date + 'T' + this.state.start_time
         let newEndTime = this.state.date + 'T' + this.state.end_time
 
-        console.log(newStartTime)
-
         fetch(appointmentsApi, {
             method: 'POST',
             headers: {
@@ -197,9 +192,7 @@ class LeadActivityContainer extends React.Component {
                 title: this.state.title,
                 date: this.state.date,
                 start_time: newStartTime,
-                end_time: newEndTime,
-                // 'presentation_made?': this.state['presentation_made?'],
-                // 'made_sale?': this.state['made_sale?']
+                end_time: newEndTime
             })
         }).then(res => res.json()).then(appointment => this.props.addNewAppointment(appointment))
         this.setInitialState()

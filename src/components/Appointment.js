@@ -1,10 +1,7 @@
 import React from 'react';
 
-
-
 const Appointment = (props) => {
     const selectRender = () => {
-        // console.log("i am from Appointment", props)
         
         if (props.findLeadName) {
             return (props.appointment['presentation_made?'] ? <li style={{color: 'green'}}>{`${props.appointment.title} with ${props.findLeadName(props.appointment.lead_id)}`}</li> :
