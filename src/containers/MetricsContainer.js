@@ -2,6 +2,7 @@ import React from 'react';
 import moment from 'moment'
 import WeeklyAppointmentsMetric from '../components/WeeklyAppointmentsMetric';
 import WeeklyProduction from '../components/WeeklyProduction';
+import './MetricsContainer.css'
 
 class MetricsContainer extends React.Component {
     state = { 
@@ -17,7 +18,7 @@ class MetricsContainer extends React.Component {
         presentations: [],
         weeklySales: [],
         polarChartData: {}
-     }
+    }
 
     componentDidMount() {
         this.setState(
@@ -137,21 +138,15 @@ class MetricsContainer extends React.Component {
         return polarChartData
     }
 
-
-
-
-
-
-
-
-
     render() { 
         console.log(this.state)
         return ( 
-            <div className="metrics-page">
+            <div>
                 <h1>Metrics</h1>
+            <div className="metrics-page">
                 <WeeklyAppointmentsMetric lineChartData={this.state.lineChartData}/>
                 <WeeklyProduction polarChartData={this.state.polarChartData}/>
+            </div>
             </div>
         );
     }
