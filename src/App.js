@@ -17,6 +17,7 @@ class App extends React.Component {
   state = { 
     currentUser: null,
     leads: [],
+    archived: [],
     appointments: [],
     calls: [],
     clickedLead: [],
@@ -30,7 +31,8 @@ setCurrentUser = (user) => {
   this.setState(
     { 
       currentUser: user,
-      leads: user.leads,
+      leads: user.leads.filter(leads => !leads['lead_archived?']),
+      archived: user.leads.filter(leads => leads['lead_archived?']),
       calls: user.calls,
       appointments: user.appointments
     }, () => {
@@ -52,13 +54,15 @@ logoutUser = () => {
 findLeadName = (id) => {
   let name
   let lead = this.state.leads.find(lead => lead.id === id)
+  if (!lead) return
   name = `${lead.first_name} ${lead.last_name}`
   return name
 }
 
 //to point us to the lead show page
   onLeadClick = (leadData) => {
-    //  console.log("i am the clicked lead", leadData.lead)
+
+    if (leadData.lead.id === undefined) return  //not sure i need this condition, bc setstate was wrong for archive lead
     this.setState(
       { 
         clickedLead: leadData.lead,
@@ -76,6 +80,15 @@ findLeadName = (id) => {
         leads:  [...this.state.leads, newLead]
         
       }) 
+  }
+
+  archiveLead = (lead) => {
+    this.setState(
+      {
+        ...this.state,
+        leads: [...this.state.leads.filter(stateLead => stateLead.id !== lead.id )],
+        archived: [...this.state.archived, lead]  
+      })
   }
 
   //triggered by user clicking on the phone number
@@ -170,7 +183,8 @@ componentDidMount() {
     //console.log(this.state.currentUser)
     // console.log(this.state.currentUser.leads)
     // console.log(this.state.appointments)
-    // console.log(this.state)
+    // console.log(this.state.leads)
+    // console.log(this.state.archived)
     // console.log(this.props, 'I am in App')
 
     if (this.state.loading) {
@@ -193,6 +207,7 @@ componentDidMount() {
                 addNewAppointment={this.addNewAppointment}
                 editCallNoApp={this.editCallNoApp}
                 editTheAppointment={this.editTheAppointment}
+                archiveLead={this.archiveLead}
                 {...routerProps}/> }></Route>
 
                 <Route path="/profile" render={(routerProps) => <Profile {...routerProps} currentUser={this.state.currentUser}/>}></Route>

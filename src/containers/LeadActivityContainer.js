@@ -9,6 +9,7 @@ import Map from './Map'
 import AppointmentUpdateForm from '../components/AppointmentUpdateForm';
 
 const callsApi = 'http://localhost:3000/api/v1/calls'
+const leadUpdateApi = 'http://localhost:3000/api/v1/leads'
 const callsApiUpdate = 'http://localhost:3000/api/v1/calls'
 const appointmentsApi = 'http://localhost:3000/api/v1/appointments'
 
@@ -149,9 +150,25 @@ class LeadActivityContainer extends React.Component {
                     'appointment_made?': this.state['appointment_made?'],
                     'archive_lead?': this.state['archive_lead?']
                 })
-            }).then(resp => resp.json()).then(call => this.props.addNewCall(call))
-            this.setInitialState()
-            this.setState({ callsSubmitted: true  });
+            }).then(resp => resp.json()).then(call => {
+                this.props.addNewCall(call)
+                this.setInitialState()
+                this.setState({ callsSubmitted: true  })
+                if (call['archive_lead?']) {
+                    fetch(leadUpdateApi + '/' + this.state.lead_id, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-type': 'application/json',
+                            Accepts: 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: this.state.lead_id,
+                            'lead_archived?': true
+                        })
+                    }).then(res => res.json()).then(lead => this.props.archiveLead(lead))
+
+                }
+            })
 
         } else if (this.state['appointment_made?']) {
             fetch(callsApi, {
@@ -212,9 +229,10 @@ class LeadActivityContainer extends React.Component {
     
 
     render() { 
-        // console.log('I am from props in leadActCont',this.props)
+        console.log('I am from props in leadActCont',this.props)
         // console.log('I am from state in leadActCont',this.state)
         // console.log("i am localstorage:" ,localStorage.user_id)
+        console.log(this.state.lead_id)
         return ( 
             <div className="activity-show-page">
                 <div className="lead-show-page">

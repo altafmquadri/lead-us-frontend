@@ -74,6 +74,7 @@ class Map extends Component {
 
         const getRoute = (start, end) => {
             fetch(directionsApi).then(res => res.json()).then(res => {
+                if (res.routes === undefined) return //added in case fake address
                 let data = res.routes[0]
                 // console.log(data)
                 let route = data.geometry.coordinates
