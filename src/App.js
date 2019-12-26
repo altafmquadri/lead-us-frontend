@@ -17,12 +17,15 @@ class App extends React.Component {
   state = { 
     currentUser: null,
     leads: [],
-    archived: [],
-    appointments: [],
     calls: [],
+    appointments: [],
     clickedLead: [],
     clickedLeadCalls: [],
     clickedLeadAppointments: [],
+    archived: [],
+    appointmentSales: [],
+    sales: [],
+    pastClients: [],
     loading: true
 }
 
@@ -31,10 +34,13 @@ setCurrentUser = (user) => {
   this.setState(
     { 
       currentUser: user,
-      leads: user.leads.filter(leads => !leads['lead_archived?']),
+      leads: user.leads.filter(leads => !leads['lead_archived?'] && !leads['sale_made?']),
       archived: user.leads.filter(leads => leads['lead_archived?']),
+      pastClients: user.leads.filter(leads => leads['sale_made?']),
       calls: user.calls,
-      appointments: user.appointments
+      appointments: user.appointments, 
+      appointmentSales: user.appointments.filter(appointments => appointments['made_sale?']),
+      sales: user.sales
     }, () => {
       localStorage.user_id = user.id
       this.props.history.push('/')
@@ -128,7 +134,12 @@ findLeadName = (id) => {
             return stateAppointment
           }
         })]
-      })
+      }, () => this.setState(
+        { 
+          ...this.state,
+          // appointments: [...this.state.appointments.filter(appointments => !appointments['made_sale?'])],
+          appointmentSales: [...this.state.appointments.filter(appointments => appointments['made_sale?'])]  
+        }))
   }
 
   //written for the cancel button on appointment form
@@ -151,6 +162,23 @@ findLeadName = (id) => {
           }
       })]
     });
+  }
+
+  addSale = (sale) => {
+    this.setState(
+      { 
+        ...this.state,
+        sales: [...this.state.sales, sale],
+        leads: [...this.state.leads.filter(leads => !leads['sale_made?'])] 
+      })
+  }
+
+  addPastClient = (lead) => {
+    this.setState(
+      {   
+        pastClients: [...this.state.pastClients, lead],
+        leads: [...this.state.leads.filter(stateLeads => stateLeads.id !== lead.id)]
+      })
   }
 
  //End of Functions written to add lead activity ***********************************************************************************
@@ -183,6 +211,7 @@ componentDidMount() {
     //console.log(this.state.currentUser)
     // console.log(this.state.currentUser.leads)
     // console.log(this.state.appointments)
+    console.log(this.state)
     // console.log(this.state.leads)
     // console.log(this.state.archived)
     // console.log(this.props, 'I am in App')
@@ -207,10 +236,17 @@ componentDidMount() {
                 addNewAppointment={this.addNewAppointment}
                 editCallNoApp={this.editCallNoApp}
                 editTheAppointment={this.editTheAppointment}
+                addSale={this.addSale}
                 archiveLead={this.archiveLead}
+                addPastClient={this.addPastClient}
                 {...routerProps}/> }></Route>
 
-                <Route path="/profile" render={(routerProps) => <Profile {...routerProps} currentUser={this.state.currentUser}/>}></Route>
+                <Route path="/profile" render={(routerProps) => 
+                <Profile {...routerProps} 
+                currentUser={this.state.currentUser}
+                archived={this.state.archived}/>}></Route>
+
+
                 <Route path="/metrics" render={(routerProps) => <MetricsContainer
                   {...routerProps} 
                   currentUser={this.state.currentUser}

@@ -44,6 +44,9 @@ class MetricsContainer extends React.Component {
                     {
                         countOfApptInDaysOfWeek: [...this.state.countOfApptInDaysOfWeek, ...this.countOfApptInDaysOfWeek(this.state.daysOfWeek, this.state.filteredAppointmentDatesByWeek)]  
                     }, () => this.setState({ lineChartData: {...this.setLineChartData()}  })))
+
+                    console.log(this.state.weeklySales, this.state.currentUser.sales)
+                    // console.log(this.getSalesAmount(this.state.weeklySales, this.state.currentUser.sales))
     }
 
     getDaysOfTheWeek = () => {
@@ -71,6 +74,11 @@ class MetricsContainer extends React.Component {
         }
         return counts
     }
+
+    //  => {
+    //     console.log('hi')
+    // }
+
 
     getWeeklyPresentations = () => {
         let filteredAppointmentsByWeek = this.state.appointments.filter(appointment => moment(appointment.date).isSame(this.state.currentDate, 'week'))
@@ -111,6 +119,8 @@ class MetricsContainer extends React.Component {
         return chartData
     }
 
+    
+
     setPolarChartData = () => {
         const polarChartData = {
             labels: ['Appointments', 'Presentations', 'Sales'],
@@ -138,8 +148,18 @@ class MetricsContainer extends React.Component {
         return polarChartData
     }
 
+    getSalesAmount = (a, b) => {
+        if (a === undefined || b === undefined) return
+       let bFilter = b.map(b => b.lead_id)
+       let filteredA = a.filter(a => bFilter.includes(a.lead_id))
+       return filteredA
+    }
+
     render() { 
         console.log(this.state)
+        console.log(this.state.weeklySales)
+        // console.log(this.getSalesAmount(this.state.weeklySales, this.state.currentUser.sales))
+        console.log(this.getSalesAmount(this.state.currentUser.sales, this.state.weeklySales))
         return ( 
             <div>
                 <h1>Metrics</h1>

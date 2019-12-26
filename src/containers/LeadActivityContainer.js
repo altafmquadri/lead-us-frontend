@@ -154,6 +154,7 @@ class LeadActivityContainer extends React.Component {
                 this.props.addNewCall(call)
                 this.setInitialState()
                 this.setState({ callsSubmitted: true  })
+                // used to archive lead
                 if (call['archive_lead?']) {
                     fetch(leadUpdateApi + '/' + this.state.lead_id, {
                         method: 'PATCH',
@@ -166,7 +167,6 @@ class LeadActivityContainer extends React.Component {
                             'lead_archived?': true
                         })
                     }).then(res => res.json()).then(lead => this.props.archiveLead(lead))
-
                 }
             })
 
@@ -229,10 +229,10 @@ class LeadActivityContainer extends React.Component {
     
 
     render() { 
-        console.log('I am from props in leadActCont',this.props)
+        // console.log('I am from props in leadActCont',this.props)
         // console.log('I am from state in leadActCont',this.state)
         // console.log("i am localstorage:" ,localStorage.user_id)
-        console.log(this.state.lead_id)
+        // console.log(this.state.lead_id)
         return ( 
             <div className="activity-show-page">
                 <div className="lead-show-page">
@@ -262,12 +262,11 @@ class LeadActivityContainer extends React.Component {
 
                 {/* edit appointment form */}
                 {this.state.editAppointment ? <AppointmentUpdateForm
-                // formData={this.state}
-                // onTogglePresentation={this.onTogglePresentation}
-                // onToggleSale={this.onToggleSale}
                 editTheAppointment={this.props.editTheAppointment}
                 editAppointmentFormAfterSubmit={this.editAppointmentFormAfterSubmit}
                 clickedEditAppointment={this.state.clickedEditAppointment}
+                addSale={this.props.addSale}
+                addPastClient={this.props.addPastClient}
                 /> :null}
 
                 <div className="map-div">
