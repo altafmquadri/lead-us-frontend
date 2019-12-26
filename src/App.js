@@ -250,6 +250,7 @@ componentDidMount() {
                 <Route path="/metrics" render={(routerProps) => <MetricsContainer
                   {...routerProps} 
                   currentUser={this.state.currentUser}
+                  sales={this.state.sales}
                   appointments={this.state.appointments}/>}></Route>
 
                 <Route path="/new" render={(routerProps) => <NewLeadContainer

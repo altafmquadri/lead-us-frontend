@@ -7,6 +7,7 @@ import './MetricsContainer.css'
 class MetricsContainer extends React.Component {
     state = { 
         currentUser: [],
+        sales: [],
         currentDate: moment(),
         appointments: [],
         appointmentDates: [],
@@ -17,7 +18,9 @@ class MetricsContainer extends React.Component {
         weekAppointments: [],
         presentations: [],
         weeklySales: [],
-        polarChartData: {}
+        polarChartData: {},
+        weeklyFilteredSales: [],
+        salesAmount: 0
     }
 
     componentDidMount() {
@@ -25,6 +28,7 @@ class MetricsContainer extends React.Component {
             { 
                 currentUser: this.props.currentUser,
                 appointments: this.props.appointments,
+                sales: this.props.sales
                 
             }, () => this.setState({ presentations: this.getWeeklyPresentations() }))
 
@@ -43,10 +47,8 @@ class MetricsContainer extends React.Component {
                 }, () => this.setState(
                     {
                         countOfApptInDaysOfWeek: [...this.state.countOfApptInDaysOfWeek, ...this.countOfApptInDaysOfWeek(this.state.daysOfWeek, this.state.filteredAppointmentDatesByWeek)]  
-                    }, () => this.setState({ lineChartData: {...this.setLineChartData()}  })))
-
-                    console.log(this.state.weeklySales, this.state.currentUser.sales)
-                    // console.log(this.getSalesAmount(this.state.weeklySales, this.state.currentUser.sales))
+                    }, () => this.setState({ lineChartData: {...this.setLineChartData()}  }, () => this.getSalesForTheCurrentWeek(this.state.sales, this.state.weeklySales))))
+                
     }
 
     getDaysOfTheWeek = () => {
@@ -64,8 +66,10 @@ class MetricsContainer extends React.Component {
     countOfApptInDaysOfWeek = (a, b) => {
         let counts = []
         for (let i = 0; i < a.length; i++) {
+            // initialize all the current week's days to a count of zero
             let count = 0;
             for (let j = 0; j < b.length; j++) {
+                //if there is a date that matches the current weekday, then increment that date's count by 1
                 if (moment(b[j]).isSame(moment(a[i]))) {
                     count++
                 }
@@ -119,8 +123,6 @@ class MetricsContainer extends React.Component {
         return chartData
     }
 
-    
-
     setPolarChartData = () => {
         const polarChartData = {
             labels: ['Appointments', 'Presentations', 'Sales'],
@@ -148,18 +150,23 @@ class MetricsContainer extends React.Component {
         return polarChartData
     }
 
-    getSalesAmount = (a, b) => {
-        if (a === undefined || b === undefined) return
-       let bFilter = b.map(b => b.lead_id)
-       let filteredA = a.filter(a => bFilter.includes(a.lead_id))
-       return filteredA
+    getSalesForTheCurrentWeek = (a, b) => {
+        // if (a === undefined || b === undefined) return
+            let sales = a // total of all sales user has
+            let weekSales = b // all this current week sales
+            let weekSalesids = weekSales.map(wSale => wSale.lead_id) //week sales are all the appointments
+            let weeklyFilteredSales = sales.filter(sale => weekSalesids.includes(sale.lead_id)) // want all of the total sales that correspond to the week
+            this.setState({ weeklyFilteredSales: [...weeklyFilteredSales]  });
+            //sum up all the annualized life premiums for the week
+            let salesAmount = weeklyFilteredSales.reduce((total, alp)=> {
+                return total + alp.annualized_life_premium
+            }, 0)
+            this.setState({ salesAmount: salesAmount  });
     }
 
     render() { 
         console.log(this.state)
-        console.log(this.state.weeklySales)
-        // console.log(this.getSalesAmount(this.state.weeklySales, this.state.currentUser.sales))
-        console.log(this.getSalesAmount(this.state.currentUser.sales, this.state.weeklySales))
+        // console.log(this.getSalesForTheCurrentWeek(this.state.currentUser.sales, this.state.weeklySales))
         return ( 
             <div>
                 <h1>Metrics</h1>
@@ -171,5 +178,5 @@ class MetricsContainer extends React.Component {
         );
     }
 }
- 
+
 export default MetricsContainer;
