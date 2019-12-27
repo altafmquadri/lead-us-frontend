@@ -168,12 +168,24 @@ class MetricsContainer extends React.Component {
         console.log(this.state)
         // console.log(this.getSalesForTheCurrentWeek(this.state.currentUser.sales, this.state.weeklySales))
         return ( 
-            <div>
-                <h1>Metrics</h1>
+            <div className="metrics-page-container">
+                
             <div className="metrics-page">
+                <h1>Metrics</h1>
                 <WeeklyAppointmentsMetric lineChartData={this.state.lineChartData}/>
                 <WeeklyProduction polarChartData={this.state.polarChartData}/>
             </div>
+                <div>
+                    <h1>Production</h1>
+                    <h5>Annualized Life Premium: ${this.state.salesAmount.toFixed(2)}</h5>
+                    <p>Written for the week of {moment().startOf('week').format('MM-DD')} 
+                    {" "} through {moment().endOf('week').format('MM-DD')}</p>
+
+
+                    <h1>Ratios</h1>
+                    <p>Show Ratio:{" ",parseFloat(this.state.presentations.length/this.state.weekAppointments.length).toFixed(2)}</p>
+                    <p>Close Ratio:{" ",parseFloat(this.state.presentations.length/this.state.weeklyFilteredSales.length).toFixed(2)}</p>
+                </div>
             </div>
         );
     }
