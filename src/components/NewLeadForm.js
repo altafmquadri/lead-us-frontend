@@ -1,4 +1,5 @@
 import React from 'react';
+import './NewLeadForm.css'
 
 const NewLeadForm = (props) => {
     

@@ -1,11 +1,22 @@
 .navbar {
     direction: rtl;
     padding: 5px;
+    height: 20px;
+    width: 98%;
+    background: #edf2f4;
+    border-radius: 8px;
+    margin: 4px;
+    
+    
 }
 
 .navbar a {
     padding: 3px;
     margin: 5px;
+    display: inline;
+    font-size: 18px;
+    color: #50514f;
+    font-family: "Roboto", sans-serif;
     
     
 }

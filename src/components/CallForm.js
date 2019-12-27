@@ -1,8 +1,10 @@
 import React from 'react';
+import './CallForm.css'
 
 const CallForm = (props) => {
     // console.log(props)
     return (
+        <div className="parent-call-form">
         <div className="call-form">
             <br/><br/>
             <form className="new-call-form"
@@ -53,6 +55,7 @@ const CallForm = (props) => {
                 <input type="submit" value="Submit" />
             </form>
         </div>
+    </div>
     )
 }
 
