@@ -183,8 +183,8 @@ class MetricsContainer extends React.Component {
 
 
                     <h1>Ratios</h1>
-                    <p>Show Ratio:{" ",parseFloat(this.state.presentations.length/this.state.weekAppointments.length).toFixed(2)}</p>
-                    <p>Close Ratio:{" ",parseFloat(this.state.presentations.length/this.state.weeklyFilteredSales.length).toFixed(2)}</p>
+                    <p>Show Ratio:{" "} {parseFloat(this.state.presentations.length/this.state.weekAppointments.length).toFixed(2)}</p>
+                    <p>Close Ratio:{" "} {parseFloat(this.state.presentations.length/this.state.weeklyFilteredSales.length).toFixed(2)}</p>
                 </div>
             </div>
         );
