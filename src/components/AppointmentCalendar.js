@@ -6,9 +6,11 @@ const localizer = momentLocalizer(moment)
 
 const renderMyAppointments = (props) => {
 
+
     if (props.appointments === undefined || props.appointments === null) return
 
     return props.appointments.map(event => (
+      
       {
         title: event.title + ' with ' + props.findLeadName(event.lead_id),
         start: new Date(new Date(event.start_time).getFullYear(), new Date(event.start_time).getMonth(), new Date(event.start_time).getDate(), new      Date(event.start_time).getHours(), new Date(event.start_time).getMinutes()),

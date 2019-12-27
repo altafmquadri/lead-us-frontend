@@ -38,8 +38,16 @@ setCurrentUser = (user) => {
       archived: user.leads.filter(leads => leads['lead_archived?']),
       pastClients: user.leads.filter(leads => leads['sale_made?']),
       calls: user.calls,
-      appointments: user.appointments, 
-      appointmentSales: user.appointments.filter(appointments => appointments['made_sale?']),
+
+      /* had to write a different filter for appointments when a lead is archived
+      taking all leads and filtering them for archived leads, mapping their ids
+      to check that appointment with an archived lead id is not included among them
+      */
+      appointments: user.appointments
+        .filter(appointment => (!(user.leads.filter(leads => leads['lead_archived?'])
+        .map(archiveLead => archiveLead.id)).includes(appointment.lead_id))), 
+      
+        appointmentSales: user.appointments.filter(appointments => appointments['made_sale?']),
       sales: user.sales
     }, () => {
       localStorage.user_id = user.id
@@ -58,8 +66,13 @@ logoutUser = () => {
 //Functions written to add lead activity ***************************************************************************************
 
 findLeadName = (id) => {
-  let name
-  let lead = this.state.leads.find(lead => lead.id === id)
+  if (id === undefined) return
+  let name, lead
+  let found = this.state.leads.find(lead => lead.id === id)
+  found ? lead = this.state.leads.find(lead => lead.id === id)
+    : !found ? lead = this.state.pastClients.find(lead => lead.id === id)
+    : lead = this.state.archived.find(lead.id === id)
+
   if (!lead) return
   name = `${lead.first_name} ${lead.last_name}`
   return name
@@ -93,9 +106,15 @@ findLeadName = (id) => {
       {
         ...this.state,
         leads: [...this.state.leads.filter(stateLead => stateLead.id !== lead.id )],
-        archived: [...this.state.archived, lead]  
-      })
+        archived: [...this.state.archived, lead] 
+      }, () => this.setState(
+        { 
+          appointments: [...this.state.appointments.filter(appointment => (!(this.state.archived.map(archiveLead => archiveLead.id)).includes(appointment.lead_id)))] 
+        }))
   }
+
+
+
 
   //triggered by user clicking on the phone number
   addNewCall = (newCall) => {
@@ -195,23 +214,26 @@ componentDidMount() {
       }
     }).then(res => res.json()).then(user => this.setCurrentUser(user))
   }
-
   this.setState(
     { 
       loading: false, 
       clickedLead: [],
       clickedLeadCalls: [],
-      clickedLeadAppointments: []
+      clickedLeadAppointments: [],
+      appointments: [...this.state.appointments.filter(appointment => (!(this.state.archived.map(archiveLead => archiveLead.id)).includes(appointment.lead_id)))]
     })
+
+  
     
 }
 
   render() {
+    // this.testFunction()
     // console.log("i am clicked lead calls",this.state.clickedLeadCalls)
-    //console.log(this.state.currentUser)
+    console.log(this.state)
     // console.log(this.state.currentUser.leads)
     // console.log(this.state.appointments)
-    console.log(this.state)
+    // console.log(this.state)
     // console.log(this.state.leads)
     // console.log(this.state.archived)
     // console.log(this.props, 'I am in App')
