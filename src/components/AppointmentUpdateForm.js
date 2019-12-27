@@ -19,7 +19,11 @@ class AppointmentUpdateForm extends React.Component {
     }
 
     onToggleSale = () => {
-        this.setState({ 'made_sale?': !this.state['made_sale?']  });
+        this.setState(
+            { 
+                'made_sale?': !this.state['made_sale?'],
+                'presentation_made?': true  
+            });
     }
 
     onAptEditSubmission = (e) => {
@@ -59,7 +63,7 @@ class AppointmentUpdateForm extends React.Component {
                     body: JSON.stringify({
                         id: appointment.lead_id,
                         'sale_made?': true,
-                        'lead_archived?': false
+                        'lead_archived?': false,
                     })
                 }).then(res => res.json()).then(lead => this.props.addPastClient(lead)))
 
@@ -93,7 +97,9 @@ class AppointmentUpdateForm extends React.Component {
                             name="presentation_made?" 
                             onChange={this.onTogglePresentation}
                             value={this.state['presentation_made?']} 
-                            checked={!!this.state['presentation_made?'] ? true : null}/>True
+                            checked={!!this.state['presentation_made?'] ? true 
+                            :this.state['presentation_made?'] ? true
+                            : null}/>True
                         
                         <input 
                             type="radio" 

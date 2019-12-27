@@ -126,11 +126,19 @@ class LeadActivityContainer extends React.Component {
     }
 
     onToggleArchive = () => {
-        this.setState({ 'archive_lead?': !this.state['archive_lead?']  });
+        this.setState(
+            { 
+                'archive_lead?': !this.state['archive_lead?'],
+                'appointment_made?': false  
+            });
     }
 
     onToggleAppointment = () => {
-        this.setState({ 'appointment_made?': !this.state['appointment_made?']  });
+        this.setState(
+            { 
+                'appointment_made?': !this.state['appointment_made?'],
+                'archive_lead?': false  
+            })
     }
 
     onFormSubmission = (e) => {
