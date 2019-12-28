@@ -1,0 +1,15 @@
+.leads-container {
+    padding-right: 20px;
+    border-right: 1px solid rgb(167, 163, 163); 
+    
+}
+
+.leads-ls {
+    list-style: none;
+    padding: 0;
+}
+
+.leads-container h1 {
+    text-align: center;
+    font-size: 25px;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import './LoginForm.css'
+import './Forms.css'
 
 const api = 'http://localhost:3000/api/v1/login'
 
@@ -70,22 +70,26 @@ class LoginForm extends React.Component {
                 onSubmit={this.loginFormSubmission} 
                 className="login-form">
 
-                    <label>Username:
-                        <input type="text" 
+                <div className="label-input"> 
+                    <label>Username:</label>
+                        <input className="form-input" type="text" 
                         name="username"
                         value={this.state.username}
                         onChange={this.formHandler}
-                        /></label><br/><br/>
-                        
-
-                    <label>Password:                
-                        <input type="password"
+                        />
+                </div> 
+                
+                <div className="label-input"> 
+                    <label>Password:</label>             
+                        <input className="form-input" type="password"
                         value={this.state.password}
                         onChange={this.formHandler}
-                        name="password" /></label><br/><br/>
+                        name="password" />
+                </div>
 
-
-                <input type="submit" value="Submit" />  
+                <div className="submit">
+                    <input className="submit-btn" type="submit" value="Submit" />  
+                </div>
                 </form>
             </div>
         );

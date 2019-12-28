@@ -5,11 +5,13 @@ const CallForm = (props) => {
     // console.log(props)
     return (
         <div className="parent-call-form">
-        <div className="call-form">
-            <br/><br/>
+        <div className="call-form-div">
+        
             <form className="new-call-form"
                 onSubmit={props.onFormSubmission}>
-                <label>Call Status: </label>
+
+            <div className="label-input">
+                <label>Call Status:</label> 
                     <select 
                         value={props.call_status} 
                         onChange={props.onFormChange}
@@ -19,8 +21,9 @@ const CallForm = (props) => {
                         <option value="Call Again">Call Again</option>
                         <option value="Booked Appointment">Booked Appointment</option>
                     </select>
-                <br/><br/>
-
+            </div>        
+            
+            <div className="label-input">
                 <label>Archive Lead:</label>
                     <input 
                         onChange={props.onToggleArchive}
@@ -28,15 +31,18 @@ const CallForm = (props) => {
                         name="archive_lead?" 
                         value={props.formData['archive_lead?']} 
                         checked={!!props.formData['archive_lead?'] ? true : null}/>True
-                    
+            </div>
+
+                <div className="label-input">
                     <input 
                         onChange={props.onToggleArchive}
                         type="radio" 
                         name="archive_lead?" 
                         value={props.formData['archive_lead?']} 
                         checked={!!props.formData['archive_lead?'] ? null : true} />False
-                <br/><br/>
+                </div>
 
+            <div className="label-input">
                 <label>Appointment Made:</label>
                     <input 
                         onChange={props.onToggleAppointment}
@@ -44,15 +50,20 @@ const CallForm = (props) => {
                         name="appointment_made?" 
                         value={props.formData['appointment_made?']} 
                         checked={!!props.formData['appointment_made?'] ? true : null}/>True
-
+            </div>
+            
+            <div className="label-input">
                     <input 
                         onChange={props.onToggleAppointment}
                         type="radio" 
                         name="appointment_made?" 
                         value={props.formData['appointment_made?']} 
                         checked={!!props.formData['appointment_made?'] ? null : true}/>False
-                <br/><br/>
-                <input type="submit" value="Submit" />
+            </div>
+
+            <div className="submit">
+                <input className="submit-btn" type="submit" value="Submit" />
+            </div>
             </form>
         </div>
     </div>

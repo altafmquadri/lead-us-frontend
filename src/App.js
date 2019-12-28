@@ -7,6 +7,7 @@ import SignupForm from './components/SignupForm';
 import LoginForm from './components/LoginForm';
 import Profile from './containers/Profile'
 import MetricsContainer from './containers/MetricsContainer'
+import './App.css'
 
 import {Switch, Route, withRouter } from "react-router-dom";
 
@@ -244,7 +245,6 @@ componentDidMount() {
 
     return (
       <div className="main-page-container">
-          <div>
               <Navbar currentUser={this.state.currentUser} logoutUser={this.logoutUser}/>
 
               <Switch>
@@ -291,7 +291,6 @@ componentDidMount() {
 
               </Switch>
             </div>
-        </div>
     );
   }
 }

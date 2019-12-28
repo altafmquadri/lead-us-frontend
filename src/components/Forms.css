@@ -1,0 +1,52 @@
+.new-lead-form-div, .login-form-div, .signup-form-div, .call-form-div {
+    width: 500px;
+    height: 100%;
+    margin: 20px auto;
+}
+
+.new-lead-form, .login-form, .signup-form, .new-call-form {
+    position: initial;
+    background: #cbd4c2;
+    max-width: 600px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+
+  .new-lead-form label, .login-form label, .signup-form label, .new-call-form label {
+    font-weight: bold;
+    margin: auto 0;
+  }
+
+  .label-input {
+	cursor: pointer;
+  color: #50514f;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 25px;
+  }
+
+  .form-input {
+    border-radius: 5px;
+    border-style: none;
+    height: 25px;
+    color: #30011e;
+    font-weight: bold;
+  }
+
+  .submit {
+    text-align: center;
+  }
+
+  .submit-btn {
+    background: #30011e;
+    color: white;
+    border-style: none;
+    margin: 0 auto;
+    font-size: 14px;
+    padding: 12px 25px;
+    border-radius: 8px;
+    width: 50%;
+    text-transform: uppercase;
+    font-weight: bold;
+  }

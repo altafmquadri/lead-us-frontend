@@ -14,7 +14,7 @@ const MainContainer = (props) =>  {
                 <LeadsContainer leads={props.leads} {...props} />
                 <AppointmentsContainer appointments={props.appointments} findLeadName={props.findLeadName}/>
             </div> 
-            <div>
+            <div >
                 <h1>Calendar</h1>
                 <AppointmentCalendar appointments={props.appointments} findLeadName={props.findLeadName}/>
             </div>

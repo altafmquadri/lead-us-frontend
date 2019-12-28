@@ -18,6 +18,13 @@ class NewLeadContainer extends React.Component {
         dateOfBirth: ""
     }
 
+    componentDidMount() {
+        this.setState(
+            { 
+                currentUser: this.props.currentUser.id  
+            })
+    }
+
     setInitialState = () => {
         this.setState({ 
             currentUser: this.props.currentUser.id,

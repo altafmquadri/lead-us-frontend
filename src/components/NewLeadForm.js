@@ -1,5 +1,5 @@
 import React from 'react';
-import './NewLeadForm.css'
+import './Forms.css'
 
 const NewLeadForm = (props) => {
     
@@ -7,65 +7,95 @@ const NewLeadForm = (props) => {
     return (
         <div className="new-lead-form-div">
 
-        <form className="new-lead-form"
-        onSubmit={props.formSubmissionHandler}>
-            <label>First Name:
-                <input type="text" 
-                name="firstName"
-                value={props.form.firstName}
-                onChange={props.formHandler} 
-                /></label><br/><br/>
+        <form 
+            className="new-lead-form"
+            onSubmit={props.formSubmissionHandler}>
 
-            <label>Last Name:           
-                <input type="text"
-                value={props.form.lastName} 
-                onChange={props.formHandler} 
-                name="lastName" /></label><br/><br/>
+            <div className="label-input"> 
+                <label>First Name:</label>
+                    <input className="form-input" 
+                    type="text" 
+                    name="firstName"
+                    value={props.form.firstName}
+                    onChange={props.formHandler}/>
+            </div>
 
-            <label>Street:              
-                <input type="text"
-                value={props.form.street}
-                onChange={props.formHandler}
-                name="street" /></label><br/><br/>
+            <div className="label-input">
+                <label>Last Name:</label>
+                    <input className="form-input" 
+                    type="text"
+                    value={props.form.lastName} 
+                    onChange={props.formHandler} 
+                    name="lastName" />
+            </div>
 
-            <label>City:                
-                <input type="text"
-                value={props.form.city}
-                onChange={props.formHandler} 
-                name="city" /></label><br/><br/>
+            <div className="label-input">
+                <label>Street:</label>
+                    <input className="form-input" 
+                    type="text"
+                    value={props.form.street}
+                    onChange={props.formHandler}
+                    name="street" />
+            </div>
 
-            <label>State:               
-                <input type="text"
-                value={props.form.state}
-                onChange={props.formHandler}
-                name="state" /></label> <br/><br/>
+            <div className="label-input">
+                <label>City:</label>
+                    <input className="form-input" 
+                    type="text"
+                    value={props.form.city}
+                    onChange={props.formHandler} 
+                    name="city" />
+            </div>
 
-            <label>Postal Code:         
-                <input type="text"
-                value={props.form.postalCode}
-                onChange={props.formHandler} 
-                name="postalCode" /></label><br/><br/>
+            <div className="label-input">
+                <label>State:</label>
+                    <input className="form-input" 
+                    type="text"
+                    value={props.form.state}
+                    onChange={props.formHandler}
+                    name="state" /> 
+            </div>
 
-            <label>Phone Number:        
-                <input type="tel"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                value={props.form.phoneNumbe}
-                onChange={props.formHandler} 
-                name="phoneNumber" /></label><br/><br/>
+            <div className="label-input">
+                <label>Postal Code:</label>
+                    <input className="form-input" 
+                    type="text"
+                    value={props.form.postalCode}
+                    onChange={props.formHandler} 
+                    name="postalCode" />
+            </div>
 
-            <label>Beneficary Information:    
-                <input type="text"
-                value={props.form.beneficiaryInformation}
-                onChange={props.formHandler} 
-                name="beneficiaryInformation" /></label><br/><br/>
+            <div className="label-input">
+                <label>Phone Number:</label>
+                    <input className="form-input" 
+                    type="tel"
+                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    value={props.form.phoneNumbe}
+                    onChange={props.formHandler} 
+                    name="phoneNumber" />
+            </div>
 
-            <label>Date of Birth:    
-                <input type="date"
-                value={props.form.dateOfBirth}
-                onChange={props.formHandler} 
-                name="dateOfBirth" /></label><br/><br/>
+            <div className="label-input">
+                <label>Beneficary Information:</label>
+                    <input className="form-input" 
+                    type="text"
+                    value={props.form.beneficiaryInformation}
+                    onChange={props.formHandler} 
+                    name="beneficiaryInformation" />
+            </div>
+        
+            <div className="label-input">
+                <label>Date of Birth:</label>
+                    <input className="form-input" 
+                    type="date"
+                    value={props.form.dateOfBirth}
+                    onChange={props.formHandler} 
+                    name="dateOfBirth" />
+            </div>
 
-        <input type="submit" value="Submit" />
+            <div className="submit">
+                <input className="submit-btn" type="submit" value="Submit" />
+            </div>
         </form>
     </div>
     )

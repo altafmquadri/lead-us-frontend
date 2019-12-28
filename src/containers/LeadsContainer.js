@@ -1,5 +1,6 @@
 import React from 'react';
 import Lead from '../components/Lead'
+import './LeadsContainer.css'
 
 class LeadsContainer extends React.Component {
     
@@ -21,7 +22,7 @@ class LeadsContainer extends React.Component {
         return ( 
             <div className="leads-container">
                 <h1>My Leads</h1>
-                <ul>
+                <ul className="leads-ls">
                     {this.renderLeads()}
                 </ul>
             </div>

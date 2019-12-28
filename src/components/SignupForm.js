@@ -1,11 +1,11 @@
 import React from 'react';
-import './SignupForm.css'
+import './Forms.css'
 
 const api = 'http://localhost:3000/api/v1/users'
 
 class SignupForm extends React.Component {
 
-    state = { 
+    state = {
         username: "",
         first_name: "",
         last_name: "",
@@ -32,7 +32,7 @@ class SignupForm extends React.Component {
                 },
                 body: JSON.stringify(this.state)
             }).then(res => res.json()).then(user => {
-                if(user.errors) {
+                if (user.errors) {
                     alert(user.errors)
                 } else {
                     this.props.setCurrentUser(user)
@@ -51,13 +51,13 @@ class SignupForm extends React.Component {
         const options = {
             enableHighAccuracy: true,
             timeout: 5000,
-            maximumAge:0
+            maximumAge: 0
         }
         const success = (position) => {
             const coordinateObj = position.coords
             this.setState(
-                { 
-                    latitude: coordinateObj.latitude,  
+                {
+                    latitude: coordinateObj.latitude,
                     longitude: coordinateObj.longitude
                 })
         }
@@ -67,61 +67,71 @@ class SignupForm extends React.Component {
 
         navigator.geolocation.getCurrentPosition(success, error, options)
     }
-    
-    
-    render() { 
+
+
+    render() {
         // console.log(this.props)
-        return ( 
+        return (
             <div className="signup-form-div">
                 <form
-                onSubmit={this.signupFormSubmission} 
-                className="signup-form">
+                    className="signup-form"
+                    onSubmit={this.signupFormSubmission}>
 
-                    <label>Username:
-                    <input type="text" 
-                    name="username"
-                    value={this.state.username}
-                    onChange={this.formHandler}
-                    /></label><br/><br/>
+                    <div className="label-input">
+                        <label>Username:</label>
+                            <input type="text" className="form-input" 
+                                name="username"
+                                value={this.state.username}
+                                onChange={this.formHandler}/>
+                    </div>
+
+                    <div className="label-input">
+                        <label>First Name:</label>
+                            <input type="text" className="form-input" 
+                                name="first_name"
+                                value={this.state.first_name}
+                                onChange={this.formHandler}/>
+                    </div>
+
+                    <div className="label-input">
+                        <label>Last Name:</label>
+                            <input type="text" className="form-input" 
+                                value={this.state.last_name}
+                                onChange={this.formHandler}
+                                name="last_name"/>
+                    </div>
+
+                    <div className="label-input">
+                        <label>Company Name:</label>
+                            <input type="text" className="form-input" 
+                                value={this.state.company_name}
+                                onChange={this.formHandler}
+                                name="company_name"/>
+                    </div>
                     
-                    
-                    <label>First Name:
-                    <input type="text" 
-                    name="first_name"
-                    value={this.state.first_name}
-                    onChange={this.formHandler}
-                    /></label><br/><br/>
+                    <div className="label-input">
+                        <label>Password:</label>
+                            <input type="password" className="form-input" 
+                                value={this.state.password}
+                                onChange={this.formHandler}
+                                name="password" />
+                    </div>
 
-                <label>Last Name:           
-                    <input type="text"
-                    value={this.state.last_name}
-                    onChange={this.formHandler}
-                    name="last_name" /></label><br/><br/>
+                        <div className="label-input">
+                            <label>Password Confirmation:</label>
+                                <input type="password" className="form-input" 
+                                    value={this.state.password_confirmation}
+                                    onChange={this.formHandler}
+                                    name="password_confirmation" />
+                        </div>
 
-                <label>Company Name:              
-                    <input type="text"
-                    value={this.state.company_name}
-                    onChange={this.formHandler}
-                    name="company_name" /></label><br/><br/>
-
-                <label>Password:                
-                    <input type="password"
-                    value={this.state.password}
-                    onChange={this.formHandler}
-                    name="password" /></label><br/><br/>
-
-
-                <label>Password Confirmation:                
-                    <input type="password"
-                    value={this.state.password_confirmation}
-                    onChange={this.formHandler}
-                    name="password_confirmation" /></label><br/><br/>
-
-                <input type="submit" value="Submit" />  
-            </form>
+                        <div className="submit">
+                            <input className="submit-btn" type="submit" value="Submit" />  
+                        </div>
+                </form>
             </div>
-        );
-    }
-}
+                );
+            }
+        }
 
 export default SignupForm;
