@@ -1,10 +1,10 @@
-.new-lead-form-div, .login-form-div, .signup-form-div, .call-form-div {
+.new-lead-form-div, .login-form-div, .signup-form-div {
     width: 500px;
     height: 100%;
     margin: 20px auto;
 }
 
-.new-lead-form, .login-form, .signup-form, .new-call-form {
+.new-lead-form, .login-form, .signup-form {
     position: initial;
     background: #cbd4c2;
     max-width: 600px;
@@ -13,7 +13,7 @@
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.24);
   }
 
-  .new-lead-form label, .login-form label, .signup-form label, .new-call-form label {
+  .new-lead-form label, .login-form label, .signup-form label {
     font-weight: bold;
     margin: auto 0;
   }

@@ -1,0 +1,92 @@
+.call-form-div, .appointment-form-div {
+    width: 360px;
+}
+
+.appointment-form-div {
+    margin: 0 0 0 315px;
+}
+
+.new-call-form {
+    margin: 10px 25px;
+    background: #ede3e4;
+    
+}
+
+.new-appointment-form {
+    margin: 10px 25px;
+    background: #cbd4c2;
+    
+}
+
+.new-call-form, .new-appointment-form {
+    position: initial;
+    max-width: 360px;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.24);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.label-input-appt input {
+    border-radius: 5px;
+    border-style: none;
+    text-align: right;
+
+}
+
+.new-call-form label {
+    color: #30011e;
+}
+
+.new-appointment-form label {
+    color: #50514f
+}
+
+.new-call-form label, .new-appointment-form label {
+    font-weight: bold;
+    margin: auto 0;
+}
+
+.label-input-call, .label-input-call-radio {
+    color: #50514f;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.label-input-call, .label-input-call-radio {
+    cursor: pointer;
+    display: flex;
+}
+
+.new-appointment-form .label-input-appt {
+    cursor: pointer;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 0 5px;
+    padding: 0 0 7px 0;
+    
+}
+
+.submit-call, .submit-appt {
+    text-align: center;
+}
+
+.submit-btn-call {
+    background: #30011e;
+}
+
+.submit-btn-appt {
+    background: #50514f;
+}
+
+
+.submit-btn-call, .submit-btn-appt {
+    color: white;
+    border-style: none;
+    margin: 0 auto;
+    font-size: 14px;
+    padding: 12px 25px;
+    border-radius: 8px;
+    width: 50%;
+    text-transform: uppercase;
+    font-weight: bold;
+}

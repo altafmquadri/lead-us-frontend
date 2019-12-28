@@ -8,7 +8,7 @@ const AppointmentForm = (props) => {
             <form className="new-appointment-form"
             onSubmit={props.onAppointmentSubmit}>
 
-            <div className="label-input"> 
+            <div className="label-input-appt"> 
                 <label>Title:</label>
                     <input type="text" 
                     name="title"
@@ -17,7 +17,7 @@ const AppointmentForm = (props) => {
                     />
             </div>
 
-            <div className="label-input"> 
+            <div className="label-input-appt"> 
                 <label>Date:</label>   
                     <input type="date"
                     value={props.formData.date}
@@ -25,7 +25,7 @@ const AppointmentForm = (props) => {
                     name="date" />
             </div>
 
-            <div className="label-input"> 
+            <div className="label-input-appt"> 
                 <label>Start Time:</label>    
                     <input type="time"
                     value={props.formData.start_time}
@@ -33,7 +33,7 @@ const AppointmentForm = (props) => {
                     name="start_time" />
             </div>
 
-            <div className="label-input"> 
+            <div className="label-input-appt"> 
                 <label>End Time:</label> 
                     <input type="time"
                     value={props.formData.end_time}
@@ -41,8 +41,8 @@ const AppointmentForm = (props) => {
                     name="end_time" />
             </div>
 
-            <div className="submit">
-                <input className="submit-btn" type="submit" value="Submit" />
+            <div className="submit-appt">
+                <input className="submit-btn-appt" type="submit" value="Submit" />
                 <input type="button" value="Cancel" onClick={props.noAppUpdate} />
             </div>
 

@@ -1,16 +1,16 @@
 import React from 'react';
-import './CallForm.css'
+import './ActivityForms.css'
 
 const CallForm = (props) => {
     // console.log(props)
     return (
-        <div className="parent-call-form">
+        // <div className="parent-call-form">
         <div className="call-form-div">
         
             <form className="new-call-form"
                 onSubmit={props.onFormSubmission}>
 
-            <div className="label-input">
+            <div className="label-input-call">
                 <label>Call Status:</label> 
                     <select 
                         value={props.call_status} 
@@ -23,7 +23,7 @@ const CallForm = (props) => {
                     </select>
             </div>        
             
-            <div className="label-input">
+            <div className="label-input-call-radio">
                 <label>Archive Lead:</label>
                     <input 
                         onChange={props.onToggleArchive}
@@ -31,18 +31,17 @@ const CallForm = (props) => {
                         name="archive_lead?" 
                         value={props.formData['archive_lead?']} 
                         checked={!!props.formData['archive_lead?'] ? true : null}/>True
-            </div>
+            
 
-                <div className="label-input">
                     <input 
                         onChange={props.onToggleArchive}
                         type="radio" 
                         name="archive_lead?" 
                         value={props.formData['archive_lead?']} 
                         checked={!!props.formData['archive_lead?'] ? null : true} />False
-                </div>
+            </div>
 
-            <div className="label-input">
+            <div className="label-input-call-radio">
                 <label>Appointment Made:</label>
                     <input 
                         onChange={props.onToggleAppointment}
@@ -50,9 +49,7 @@ const CallForm = (props) => {
                         name="appointment_made?" 
                         value={props.formData['appointment_made?']} 
                         checked={!!props.formData['appointment_made?'] ? true : null}/>True
-            </div>
-            
-            <div className="label-input">
+        
                     <input 
                         onChange={props.onToggleAppointment}
                         type="radio" 
@@ -61,12 +58,12 @@ const CallForm = (props) => {
                         checked={!!props.formData['appointment_made?'] ? null : true}/>False
             </div>
 
-            <div className="submit">
-                <input className="submit-btn" type="submit" value="Submit" />
+            <div className="submit-call">
+                <input className="submit-btn-call" type="submit" value="Submit" />
             </div>
             </form>
         </div>
-    </div>
+    // </div>
     )
 }
 
