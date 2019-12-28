@@ -43,7 +43,7 @@ const AppointmentForm = (props) => {
 
             <div className="submit-appt">
                 <input className="submit-btn-appt" type="submit" value="Submit" />
-                <input type="button" value="Cancel" onClick={props.noAppUpdate} />
+                <input className="cancel-btn-appt" type="button" value="Cancel" onClick={props.noAppUpdate} />
             </div>
 
             </form>

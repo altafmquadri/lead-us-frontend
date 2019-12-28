@@ -29,7 +29,9 @@
 .label-input-appt input {
     border-radius: 5px;
     border-style: none;
-    text-align: right;
+    color: #30011e;
+    width: 155px;
+    font-weight: bold;
 
 }
 
@@ -78,6 +80,10 @@
     background: #50514f;
 }
 
+.cancel-btn-appt {
+    background: #ede3e4;
+}
+
 
 .submit-btn-call, .submit-btn-appt {
     color: white;
@@ -87,6 +93,18 @@
     padding: 12px 25px;
     border-radius: 8px;
     width: 50%;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.cancel-btn-appt {
+    color: white;
+    border-style: none;
+    margin: 5px;
+    font-size: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    width: 30%;
     text-transform: uppercase;
     font-weight: bold;
 }
