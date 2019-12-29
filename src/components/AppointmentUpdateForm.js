@@ -1,4 +1,5 @@
 import React from 'react';
+import './ActivityForms.css'
 
 const appointmentsApi = 'http://localhost:3000/api/v1/appointments'
 const salesApi = 'http://localhost:3000/api/v1/sales'
@@ -88,55 +89,61 @@ class AppointmentUpdateForm extends React.Component {
         // console.log(this.props.clickedEditAppointment)
         
         return (
-            <div className="appointment-update">
+            <div className="app-update-div">
                 <form onSubmit={this.onAptEditSubmission} 
-                    className="appointment-update-form">
-                    <label>Presentation Made:</label>
-                        <input 
-                            type="radio" 
-                            name="presentation_made?" 
-                            onChange={this.onTogglePresentation}
-                            value={this.state['presentation_made?']} 
-                            checked={!!this.state['presentation_made?'] ? true 
-                            :this.state['presentation_made?'] ? true
-                            : null}/>True
-                        
-                        <input 
-                            type="radio" 
-                            name="presentation_made?" 
-                            onChange={this.onTogglePresentation}
-                            value={this.state['presentation_made?']} 
-                            checked={!!this.state['presentation_made?'] ? null : true}/>False
-                    <br/><br/>
-    
-                    <label>Made Sale:</label>
-                        <input 
-                            type="radio" 
-                            name="made_sale?" 
-                            onChange={this.onToggleSale}
-                            value={this.state['made_sale?']} 
-                            checked={!!this.state['made_sale?'] ? true : null}/>True
-                        
-                        <input 
-                            type="radio" 
-                            name="made_sale?" 
-                            onChange={this.onToggleSale}
-                            value={this.state['made_sale?']} 
-                            checked={!!this.state['made_sale?'] ? null : true} />False
-                        <br/><br/>
+                    className="app-update-form">
 
-                    
-                        {this.state['made_sale?'] === false ? null :
-                            <div>
-                                <label>Annualized Life Premium:</label>
-                                    <input 
-                                        type="number" 
-                                        name="annualized_life_premium"
-                                        onChange={this.amountInputHandler}
-                                        value={this.state.annualized_life_premium} />
-                            </div>}
+                    <div className="app-update-label-radio">
+                        <label>Presentation Made:</label>
+                            <input 
+                                type="radio" 
+                                name="presentation_made?" 
+                                onChange={this.onTogglePresentation}
+                                value={this.state['presentation_made?']} 
+                                checked={!!this.state['presentation_made?'] ? true 
+                                :this.state['presentation_made?'] ? true
+                                : null}/>True
+                            
+                            <input 
+                                type="radio" 
+                                name="presentation_made?" 
+                                onChange={this.onTogglePresentation}
+                                value={this.state['presentation_made?']} 
+                                checked={!!this.state['presentation_made?'] ? null : true}/>False
+                    </div>
 
-                    <input type="submit" value="Submit" />
+                    <div className="app-update-label-radio">
+                        <label>Made Sale:</label>
+                            <input 
+                                type="radio" 
+                                name="made_sale?" 
+                                onChange={this.onToggleSale}
+                                value={this.state['made_sale?']} 
+                                checked={!!this.state['made_sale?'] ? true : null}/>True
+                            
+                            <input 
+                                type="radio" 
+                                name="made_sale?" 
+                                onChange={this.onToggleSale}
+                                value={this.state['made_sale?']} 
+                                checked={!!this.state['made_sale?'] ? null : true} />False
+                    </div>
+
+                        
+                            {this.state['made_sale?'] === false ? null :
+                                <div className="app-update-label-input">
+                                    <label>Annualized Life Premium:</label>
+                                        <input className="app-update-label-input-number"
+                                            type="number" 
+                                            name="annualized_life_premium"
+                                            onChange={this.amountInputHandler}
+                                            value={this.state.annualized_life_premium} />
+                                </div>}
+
+
+                    <div className="submit-app-update">
+                        <input className="submit-btn-app-update" type="submit" value="Submit"/>
+                    </div>
                 </form>
             </div>
         )

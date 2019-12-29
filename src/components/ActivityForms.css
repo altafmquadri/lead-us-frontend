@@ -1,4 +1,4 @@
-.call-form-div, .appointment-form-div {
+.call-form-div, .appointment-form-div, .app-update-div {
     width: 360px;
 }
 
@@ -6,19 +6,26 @@
     margin: 0 0 0 315px;
 }
 
-.new-call-form {
+.new-call-form  {
     margin: 10px 25px;
     background: #ede3e4;
-    
 }
 
 .new-appointment-form {
     margin: 10px 25px;
     background: #cbd4c2;
-    
 }
 
-.new-call-form, .new-appointment-form {
+.app-update-form {
+    margin: 10px 25px;
+    background: #50514f;
+}
+
+.app-update-div {
+    margin: 0 0 0 685px;
+}
+
+.new-call-form, .new-appointment-form, .app-update-form {
     position: initial;
     max-width: 360px;
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.24);
@@ -32,7 +39,18 @@
     color: #30011e;
     width: 155px;
     font-weight: bold;
+}
 
+.app-update-label-input {
+    margin-bottom: 10px;
+}
+
+.app-update-label-input-number {
+    border-radius: 5px;
+    border-style: none;
+    color: #30011e;
+    width: 65px;
+    font-weight: bold; 
 }
 
 .new-call-form label {
@@ -43,7 +61,15 @@
     color: #50514f
 }
 
-.new-call-form label, .new-appointment-form label {
+.app-update-label-radio label, .app-update-label-input label {
+    color: #ede3e4
+}
+
+.new-call-form label, 
+.new-appointment-form label, 
+.app-update-label-radio, 
+.app-update-label-input label,
+.app-update-label-input-number {
     font-weight: bold;
     margin: auto 0;
 }
@@ -54,7 +80,13 @@
     margin-bottom: 15px;
 }
 
-.label-input-call, .label-input-call-radio {
+.app-update-label-radio {
+    justify-content: flex-end;
+    margin-bottom: 10px;
+    color: #30011e;
+}
+
+.label-input-call, .label-input-call-radio, .app-update-label-radio {
     cursor: pointer;
     display: flex;
 }
@@ -68,7 +100,7 @@
     
 }
 
-.submit-call, .submit-appt {
+.submit-call, .submit-appt, .submit-app-update {
     text-align: center;
 }
 
@@ -84,8 +116,12 @@
     background: #ede3e4;
 }
 
+.submit-btn-app-update {
+    background: #30011e;
+}
 
-.submit-btn-call, .submit-btn-appt {
+
+.submit-btn-call, .submit-btn-appt, .submit-btn-app-update {
     color: white;
     border-style: none;
     margin: 0 auto;

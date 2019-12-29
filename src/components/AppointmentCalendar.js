@@ -17,6 +17,7 @@ const renderMyAppointments = (props) => {
         end: new Date( new Date(event.end_time).getFullYear(), new Date(event.end_time).getMonth(), new Date(event.end_time).getDate(), new Date        (event.end_time).getHours(), new Date(event.end_time).getMinutes())
     }))
   }
+
   
   const AppointmentCalendar = props => (  
 
