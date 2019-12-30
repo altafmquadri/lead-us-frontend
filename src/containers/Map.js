@@ -129,7 +129,8 @@ class Map extends Component {
             }) //end fetch
         } //end function getRoute
         
-        map.on('load', function() {
+        //changed from load to style.load to prevent layers being added to the map, before map style is applied
+        map.on('style.load', function() {
             map.addLayer({
                 id: 'point',
                 type: 'circle',
