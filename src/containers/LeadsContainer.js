@@ -1,6 +1,6 @@
 import React from 'react';
 import Lead from '../components/Lead'
-import './LeadsContainer.css'
+
 
 class LeadsContainer extends React.Component {
     
@@ -10,10 +10,6 @@ class LeadsContainer extends React.Component {
                 <Lead key={lead.id} 
                 lead={lead} 
                 onLeadClick={this.props.onLeadClick}
-            // addNewLead={this.props.addNewLead} this shouldn't be here will comment out and delete later
-            // history={this.props.history}
-            // match={this.props.match}
-            // location={this.props.location}
             />)  
     }
 
@@ -22,6 +18,7 @@ class LeadsContainer extends React.Component {
         return ( 
             <div className="leads-container">
                 <h1>My Leads</h1>
+                <hr></hr>
                 <ul className="leads-ls">
                     {this.renderLeads()}
                 </ul>

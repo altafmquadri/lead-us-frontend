@@ -4,8 +4,8 @@ const Appointment = (props) => {
     const selectRender = () => {
         
         if (props.findLeadName) {
-            return (props.appointment['presentation_made?'] ? <li style={{color: 'green'}}>{`${props.appointment.title} with ${props.findLeadName(props.appointment.lead_id)}`}</li> :
-            <li>{`${props.appointment.title} with ${props.findLeadName(props.appointment.lead_id)}`}</li>)
+            return (props.appointment['presentation_made?'] ? <li style={{color: 'green'}}>{`${props.appointment.title} with ${props.findLeadName(props.appointment.lead_id)}`}<hr></hr></li> :
+            <li>{`${props.appointment.title} with ${props.findLeadName(props.appointment.lead_id)}`}<hr></hr></li>)
         } else {
             return (
             props.appointment['presentation_made?'] ? <h3 style={{color: 'green'}} onClick={() => props.onEditAppointmentClick(props.appointment)}>{props.appointment.title}</h3>:

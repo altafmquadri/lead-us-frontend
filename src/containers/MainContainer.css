@@ -4,6 +4,74 @@
     justify-content: space-around;
     border-radius: 7px;
     margin: 0 10%;
-    background-color: #cbd4c2;
+    background-color: #ede3e4;
+    color: #30011e;
+    height: 280px;
+    max-height: 280px;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.leads-container {
+    padding-right: 20px;
+    align-items: right;
+    border-right: 1px solid rgb(167, 163, 163); 
+    overflow-y: scroll;
+}
+
+.leads-container h1 {
+    text-align: center;
+    font-size: 25px;
     color: #30011e;
 }
+
+.leads-ls {
+    list-style: none;
+    padding: 0;
+}
+
+.lead {
+    text-align: right;
+}
+
+.lead li:hover {
+    background-color: #30011e;
+    color: #edf2f4
+}
+
+.appointments-container {
+    list-style: none;
+    width: 75%;
+    overflow-y: scroll;
+}
+
+.main-container .appointments-container h1 {
+    padding: 15px;
+    text-align: right;
+    margin: 10px 5px 10px 5px; 
+    border-bottom: 0.5px solid grey
+}
+
+.main-container .appointments-container .appointment li {
+    text-align: left;
+}
+
+.appointment-calendar {
+    background-color: #F9F4F5;
+    border-radius: 15px;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.rbc-toolbar .rbc-toolbar-label, .rbc-header span {
+    color: #30011e;
+    font-weight: bold;
+}
+
+.rbc-toolbar button {
+    color: #30011e !important;
+}
+
+.rbc-date-cell {
+    color: #50514f;
+    font-weight: bold;
+}
+

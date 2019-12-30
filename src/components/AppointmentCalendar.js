@@ -2,8 +2,9 @@ import React from 'react';
 import {Calendar, momentLocalizer} from 'react-big-calendar'
 import moment from 'moment'
 import "react-big-calendar/lib/css/react-big-calendar.css";
-const localizer = momentLocalizer(moment)
 
+
+const localizer = momentLocalizer(moment)
 const renderMyAppointments = (props) => {
 
 
@@ -21,7 +22,7 @@ const renderMyAppointments = (props) => {
   
   const AppointmentCalendar = props => (  
 
-    <div style={{height: "55vh", width:"69vw"}}>
+    <div className="appointment-calendar" style={{height: "55vh", width:"75vw", padding: '15px', margin: '15px auto'}}>
         {/* {console.log(props.appointments)} */}
 
       <Calendar
