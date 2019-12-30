@@ -2,7 +2,7 @@
     direction: rtl;
     padding: 5px;
     height: 20px;
-    width: 98%;
+    width: 98;
     background: #edf2f4;
     border-radius: 8px;
     margin: 20px 0;
@@ -36,5 +36,6 @@
     width: 80%;
     margin: 0px auto;
     background: #edf2f4;
+    height: 100vh;
     
 }

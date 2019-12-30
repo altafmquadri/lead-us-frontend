@@ -13,7 +13,6 @@
 
 .leads-container {
     padding-right: 20px;
-    align-items: right;
     border-right: 1px solid rgb(167, 163, 163); 
     overflow-y: scroll;
 }
@@ -45,10 +44,10 @@
 }
 
 .main-container .appointments-container h1 {
-    padding: 15px;
+    padding: 5px;
     text-align: right;
     margin: 10px 5px 10px 5px; 
-    border-bottom: 0.5px solid grey
+    /* border-bottom: 0.5px solid grey */
 }
 
 .main-container .appointments-container .appointment li {

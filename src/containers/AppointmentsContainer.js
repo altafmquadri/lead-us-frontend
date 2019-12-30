@@ -30,6 +30,7 @@ class AppointmentsContainer extends React.Component {
         return ( 
             <div className="appointments-container">
                 <h1>Appointments</h1>
+                <hr></hr>
                 {this.renderAppointments()}
             </div>
         );

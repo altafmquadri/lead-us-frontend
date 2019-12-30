@@ -8,8 +8,8 @@ const Appointment = (props) => {
             <li>{`${props.appointment.title} with ${props.findLeadName(props.appointment.lead_id)}`}<hr></hr></li>)
         } else {
             return (
-            props.appointment['presentation_made?'] ? <h3 style={{color: 'green'}} onClick={() => props.onEditAppointmentClick(props.appointment)}>{props.appointment.title}</h3>:
-            <h3  onClick={() => props.onEditAppointmentClick(props.appointment)}>{props.appointment.title}</h3>
+            props.appointment['presentation_made?'] ? <h3 className="special" style={{color: 'green'}} onClick={() => props.onEditAppointmentClick(props.appointment)}>{props.appointment.title}<hr></hr></h3>:
+            <h3 className="special" onClick={() => props.onEditAppointmentClick(props.appointment)}>{props.appointment.title}<hr></hr></h3>
             )
         }
     }

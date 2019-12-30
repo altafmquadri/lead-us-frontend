@@ -1,6 +1,6 @@
 .new-lead-form-div, .login-form-div, .signup-form-div {
     width: 500px;
-    height: 100%;
+    height: 100vh;
     margin: 20px auto;
 }
 

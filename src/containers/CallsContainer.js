@@ -10,6 +10,7 @@ const CallsContainer = (props) => {
     return (
         <div className="calls-container">
             <h1>Calls</h1>
+            <hr></hr>
             <ol>
                 {renderCalls()}
             </ol>
