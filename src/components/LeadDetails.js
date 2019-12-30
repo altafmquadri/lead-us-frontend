@@ -7,7 +7,6 @@ const LeadDetails = (props) => {
     return (
         <div className="lead-details" >
             <h3>{`Name: ${first_name} ${last_name}`}</h3>
-            <p>{`DOB: ${date_of_birth}`}</p>
             <p>{`Address: ${street}, ${city}, ${state} ${postal_code}`}</p>
             <p>{`DOB: ${date_of_birth}`}</p>
             <p>{`Beneficiary: ${beneficiary_information}`}</p>

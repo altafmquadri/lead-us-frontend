@@ -1,8 +1,23 @@
 .lead-show-page {
+    clear: both;
     display: flex;
     justify-content: space-around;
     border: solid black 1px;
 }
+
+.lead-display {
+  margin: 55px  35px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 15px;
+  width: 600px;
+  height: 200px;
+  max-width: 600px;
+  max-height: 200px;
+  text-align: left;
+}
+
+
 
 .map-div {
     margin: 1px;
