@@ -85,7 +85,7 @@ class Map extends Component {
                         coordinates: route
                     }
                 }
-                    setTimeout(()=> null, 100) //added this to prevent error in style not loading
+                    setTimeout(()=> null, 200) //added this to prevent error in style not loading
                 if (map.getSource('route')){
                     map.getSource('route').setData(geojson)
                 } else {
@@ -129,7 +129,7 @@ class Map extends Component {
         } //end function getRoute
         
         //changed from load to style.load to prevent layers being added to the map, before map style is applied
-        map.on('load', function() {
+        map.on('style.load', function() {
             map.addLayer({
                 id: 'point',
                 type: 'circle',

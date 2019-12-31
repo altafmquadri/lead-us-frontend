@@ -165,8 +165,10 @@ class MetricsContainer extends React.Component {
     }
 
     render() { 
-        // console.log(this.state)
-        // console.log(this.getSalesForTheCurrentWeek(this.state.currentUser.sales, this.state.weeklySales))
+        console.log('week appointments ', this.state.weekAppointments)
+        console.log('week presentations ', this.state.presentations)
+        console.log('week sales ', this.state.weeklySales)
+        console.log('week filtered sales ', this.state.weeklyFilteredSales)
         return ( 
             <div className="metrics-page-container">
                 
@@ -184,8 +186,8 @@ class MetricsContainer extends React.Component {
 
                     <h1>Ratios</h1>
                     <hr></hr>
-                    <h5>Show Ratio:{" "} {this.state.weekAppointments.length === 0 ? '-' : parseFloat(this.state.presentations.length/this.state.weekAppointments.length).toFixed(2)*100 + '%'}</h5>
-                    <h5>Close Ratio:{" "} {this.state.weeklyFilteredSales.length === 0 ? '-' : parseFloat(this.state.presentations.length/this.state.weeklyFilteredSales.length).toFixed(2)*100 + '%'}</h5>
+                    <h5>Show Ratio:{" "} {this.state.presentations.length === 0 ? '-' : (parseFloat(this.state.weekAppointments.length/this.state.presentations.length).toFixed(2))*100 + '%'}</h5>
+                    <h5>Close Ratio:{" "} {this.state.weeklyFilteredSales.length === 0 ? '-' : (parseFloat(this.state.presentations.length/this.state.weeklyFilteredSales.length).toFixed(2))*100 + '%'}</h5>
                 </div>
             </div>
         );

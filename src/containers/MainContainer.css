@@ -81,14 +81,15 @@
 
 .profile-container {
     display: flex;
-    
+    align-items: flex-start;
 }
 
 .profile {
     flex:1;
     padding: 10px;
     max-width: 250px;
-    max-height: 200px;
+    height: 150px;
+    max-height: 150px;
     margin: 15px;
     text-align: left;
     background-color: rgba(249, 244, 194, 0.3);
@@ -104,11 +105,28 @@
 .past-clients-container {
     flex: 2;
     padding: 10px;
-    
+    background-color: #CBD4C2;
+    border-radius: 15px;
+    margin: 5px;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.past-clients-container h1:hover {
+    background-color:#F9F4F5;
+    border-radius: 15px;
 }
 
 .archived-clients-container {
     flex: 2;
     padding: 10px;
+    background-color: #CBD4C2;
+    border-radius: 15px;
+    margin: 5px;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.archived-clients-container h1:hover {
+    background-color:#F9F4F5;
+    border-radius: 15px;
 }
 

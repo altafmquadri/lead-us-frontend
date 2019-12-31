@@ -5,7 +5,23 @@ class Profile extends React.Component {
     state = { 
         currentUser: '',
         archived: [],
-        pastClients: []
+        pastClients: [],
+        showPastClients: false,
+        showArchived: false
+    }
+
+    viewPastClients = () => {
+        this.setState(
+            { 
+                showPastClients: !this.state.showPastClients 
+            })
+    }
+
+    viewArchived = () => {
+        this.setState(
+            { 
+                showArchived: !this.state.showArchived 
+            })
     }
 
     componentDidMount() {
@@ -43,19 +59,19 @@ class Profile extends React.Component {
                     </div>
 
                     <div className="past-clients-container">
-                        <h1>past clients</h1>
+                        <h1 onClick={this.viewPastClients}>Past clients</h1>
                         <hr></hr>
-                        <ol>
+                        {this.state.showPastClients ? <ol>
                             {this.renderPC()}
-                        </ol>
+                        </ol>: null}
                     </div>
 
                     <div className="archived-clients-container">
-                        <h1>archived leads</h1>
+                        <h1 onClick={this.viewArchived}>Archived leads</h1>
                         <hr></hr>
-                        <ol>
+                        {this.state.showArchived ? <ol>
                             {this.renderArchived()}
-                        </ol>
+                        </ol>: null}
                     </div>
 
 
