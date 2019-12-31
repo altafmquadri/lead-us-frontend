@@ -191,8 +191,6 @@ class Map extends Component {
                 style={{display: this.state.showDirections ? 'block' : 'none'}} 
                 id="instructions"></div>
                 <ReactMapGL
-                    width="100vw"
-                    height="100vw"
                     mapboxApiAccessToken={TOKEN}
                     mapStyle='mapbox://styles/mapbox/navigation-guidance-day-v4'
                     {...this.state.viewport}

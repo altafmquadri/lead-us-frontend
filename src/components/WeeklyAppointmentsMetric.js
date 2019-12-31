@@ -5,7 +5,7 @@ const WeeklyAppointmentsMetric =  (props) => {
 
         return ( 
                 <div className="weekly-appointments-metric">
-                    <h2>Weekly Appointments</h2>
+                    <h3>Weekly Appointments</h3>
                     <Line 
                         data={props.lineChartData}
                         options={{

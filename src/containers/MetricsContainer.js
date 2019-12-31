@@ -104,7 +104,7 @@ class MetricsContainer extends React.Component {
                     label: `${this.state.filteredAppointmentDatesByWeek.length} Appointments for the week`,
                     data: this.state.countOfApptInDaysOfWeek,
                     backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(48, 1, 30, 0.4)',
                         'rgba(54, 162, 235, 0.2)',
                         'rgba(255, 206, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)',
@@ -131,9 +131,9 @@ class MetricsContainer extends React.Component {
                     label: `$Weekly Presentation`,
                     data: [this.state.weekAppointments.length, this.state.presentations.length, this.state.weeklySales.length],
                     backgroundColor: [
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(48, 1, 30, 0.8)',
+                        'rgba(80, 81, 79, 0.8)',
+                        'rgba(203, 212, 194, 0.8)',
                         'rgba(255, 206, 86, 0.2)',
                         'rgba(75, 192, 192, 0.2)'
                     ],
@@ -171,20 +171,21 @@ class MetricsContainer extends React.Component {
             <div className="metrics-page-container">
                 
             <div className="metrics-page">
-                <h1>Metrics</h1>
-                <WeeklyAppointmentsMetric lineChartData={this.state.lineChartData}/>
-                <WeeklyProduction polarChartData={this.state.polarChartData}/>
+                <WeeklyAppointmentsMetric className="wam" lineChartData={this.state.lineChartData}/>
+                <WeeklyProduction className="wpm" polarChartData={this.state.polarChartData}/>
             </div>
-                <div>
+                <div className="ratios">
                     <h1>Production</h1>
-                    <h5>Annualized Life Premium: ${this.state.salesAmount.toFixed(2)}</h5>
+                    <hr></hr>
+                    <h5>Annualized Life Premium: ${this.state.salesAmount === 0.0 ? '-' : this.state.salesAmount.toFixed(2)}</h5>
                     <p>Written for the week of {moment().startOf('week').format('MM-DD')} 
                     {" "} through {moment().endOf('week').format('MM-DD')}</p>
 
 
                     <h1>Ratios</h1>
-                    <p>Show Ratio:{" "} {parseFloat(this.state.presentations.length/this.state.weekAppointments.length).toFixed(2)}</p>
-                    <p>Close Ratio:{" "} {parseFloat(this.state.presentations.length/this.state.weeklyFilteredSales.length).toFixed(2)}</p>
+                    <hr></hr>
+                    <h5>Show Ratio:{" "} {this.state.weekAppointments.length === 0 ? '-' : parseFloat(this.state.presentations.length/this.state.weekAppointments.length).toFixed(2)*100 + '%'}</h5>
+                    <h5>Close Ratio:{" "} {this.state.weeklyFilteredSales.length === 0 ? '-' : parseFloat(this.state.presentations.length/this.state.weeklyFilteredSales.length).toFixed(2)*100 + '%'}</h5>
                 </div>
             </div>
         );

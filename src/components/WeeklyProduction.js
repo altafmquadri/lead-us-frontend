@@ -5,7 +5,7 @@ const WeeklyProduction = (props) => {
 
         return ( 
             <div className="weekly-presentation-metric">
-                <h2>Weekly Production</h2>
+                <h3>Weekly Production</h3>
                 <Polar data={props.polarChartData}/>
             </div>
         );
