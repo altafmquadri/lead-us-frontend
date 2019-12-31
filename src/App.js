@@ -231,7 +231,7 @@ componentDidMount() {
   render() {
     // this.testFunction()
     // console.log("i am clicked lead calls",this.state.clickedLeadCalls)
-    console.log(this.state)
+    // console.log(this.state)
     // console.log(this.state.currentUser.leads)
     // console.log(this.state.appointments)
     // console.log(this.state)
@@ -266,6 +266,7 @@ componentDidMount() {
                 <Route path="/profile" render={(routerProps) => 
                 <Profile {...routerProps} 
                 currentUser={this.state.currentUser}
+                pastClients={this.state.pastClients}
                 archived={this.state.archived}/>}></Route>
 
 

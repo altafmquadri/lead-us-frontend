@@ -165,7 +165,7 @@ class MetricsContainer extends React.Component {
     }
 
     render() { 
-        console.log(this.state)
+        // console.log(this.state)
         // console.log(this.getSalesForTheCurrentWeek(this.state.currentUser.sales, this.state.weeklySales))
         return ( 
             <div className="metrics-page-container">

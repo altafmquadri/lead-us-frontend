@@ -71,12 +71,11 @@ class Map extends Component {
         const end = [clientLon, clientLat]
         
         const directionsApi = `https://api.mapbox.com/directions/v5/mapbox/driving/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${TOKEN}`
-
         const getRoute = (start, end) => {
             fetch(directionsApi).then(res => res.json()).then(res => {
                 if (res.routes === undefined) return //added in case fake address
                 let data = res.routes[0]
-                // console.log(data)
+
                 let route = data.geometry.coordinates
                 let geojson = {
                     type: 'Feature',
@@ -86,7 +85,7 @@ class Map extends Component {
                         coordinates: route
                     }
                 }
-                
+                    setTimeout(()=> null, 100) //added this to prevent error in style not loading
                 if (map.getSource('route')){
                     map.getSource('route').setData(geojson)
                 } else {
@@ -130,7 +129,7 @@ class Map extends Component {
         } //end function getRoute
         
         //changed from load to style.load to prevent layers being added to the map, before map style is applied
-        map.on('style.load', function() {
+        map.on('load', function() {
             map.addLayer({
                 id: 'point',
                 type: 'circle',

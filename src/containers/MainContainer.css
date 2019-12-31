@@ -76,5 +76,39 @@
 
 .profile-card h1 {
     text-align: center;
+    color: #30011e;
+}
+
+.profile-container {
+    display: flex;
+    
+}
+
+.profile {
+    flex:1;
+    padding: 10px;
+    max-width: 250px;
+    max-height: 200px;
+    margin: 15px;
+    text-align: left;
+    background-color: rgba(249, 244, 194, 0.3);
+    border-radius: 10px;
+    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.profile h4 {
+    text-align: center;
+    
+}
+
+.past-clients-container {
+    flex: 2;
+    padding: 10px;
+    
+}
+
+.archived-clients-container {
+    flex: 2;
+    padding: 10px;
 }
 
