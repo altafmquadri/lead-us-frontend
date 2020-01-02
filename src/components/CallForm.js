@@ -2,9 +2,8 @@ import React from 'react';
 import './ActivityForms.css'
 
 const CallForm = (props) => {
-    // console.log(props)
     return (
-        // <div className="parent-call-form">
+        
         <div className="call-form-div">
         
             <form className="new-call-form"
@@ -63,7 +62,6 @@ const CallForm = (props) => {
             </div>
             </form>
         </div>
-    // </div>
     )
 }
 

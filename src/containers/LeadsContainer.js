@@ -14,7 +14,6 @@ class LeadsContainer extends React.Component {
     }
 
     render() { 
-        // console.log(this.props)
         return ( 
             <div className="leads-container">
                 <h1>My Leads</h1>

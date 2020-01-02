@@ -30,7 +30,6 @@ class LoginForm extends React.Component {
             if (user.errors) {
                 alert(user.errors)
             } else {
-                //console.log(user.leads)
                 this.props.setCurrentUser(user)
             }
         })   
@@ -63,7 +62,6 @@ class LoginForm extends React.Component {
     
     
     render() { 
-        // console.log(this.state)
         return ( 
             <div className="login-form-div">
                 <form

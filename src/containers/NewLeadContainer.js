@@ -77,8 +77,6 @@ class NewLeadContainer extends React.Component {
     }
 
 render() { 
-    // console.log('I am from New Lead Container props:', this.props)
-    // console.log('I am from New Lead Container state:', this.state)
     return ( 
         <div className="new-lead">
             <NewLeadForm 

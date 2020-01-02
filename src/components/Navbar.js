@@ -3,7 +3,6 @@ import './Navbar.css'
 import { Link , Redirect} from 'react-router-dom'
 
 const Navbar = (props) => {
-    // console.log(props)
     return (
         <div className="navbar">
             {props.currentUser === null || localStorage.user_id === null ? <Link to="/login">Login</Link> : null}

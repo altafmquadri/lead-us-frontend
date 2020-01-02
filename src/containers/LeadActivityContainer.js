@@ -33,8 +33,6 @@ class LeadActivityContainer extends React.Component {
         date: "",
         start_time: "",
         end_time: "",
-        // 'presentation_made?': false,
-        // 'made_sale?': false,
 
         //to get call id in case appointment is not set
         callId: '',
@@ -237,10 +235,6 @@ class LeadActivityContainer extends React.Component {
     
 
     render() { 
-        // console.log('I am from props in leadActCont',this.props)
-        // console.log('I am from state in leadActCont',this.state)
-        // console.log("i am localstorage:" ,localStorage.user_id)
-        // console.log(this.state.lead_id)
         return ( 
             <div className="activity-show-page">
                 <div className="lead-show-page">
@@ -280,9 +274,7 @@ class LeadActivityContainer extends React.Component {
                 <div className="map-div">
                     <Map lead={this.props.lead} user={this.props.currentUser}/>
                 </div>
-
             </div>
-                
             );
         }
     }

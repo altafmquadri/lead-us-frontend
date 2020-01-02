@@ -7,7 +7,6 @@ import AppointmentCalendar from '../components/AppointmentCalendar';
 
 
 const MainContainer = (props) =>  {
-    // console.log(props.appointments)
     return ( 
         <div>    
             <div className="main-container">

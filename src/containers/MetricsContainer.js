@@ -79,11 +79,6 @@ class MetricsContainer extends React.Component {
         return counts
     }
 
-    //  => {
-    //     console.log('hi')
-    // }
-
-
     getWeeklyPresentations = () => {
         let filteredAppointmentsByWeek = this.state.appointments.filter(appointment => moment(appointment.date).isSame(this.state.currentDate, 'week'))
         let salesonWeeklyAppointments = filteredAppointmentsByWeek.filter(appointment => appointment['made_sale?'])
@@ -151,7 +146,7 @@ class MetricsContainer extends React.Component {
     }
 
     getSalesForTheCurrentWeek = (a, b) => {
-        // if (a === undefined || b === undefined) return
+        // if (a === undefined || b === undefined) return //needed this guard condition when I had the metrics container split amongst other classes
             let sales = a // total of all sales user has
             let weekSales = b // all this current week sales
             let weekSalesids = weekSales.map(wSale => wSale.lead_id) //week sales are all the appointments

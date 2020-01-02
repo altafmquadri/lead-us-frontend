@@ -73,8 +73,6 @@ class Profile extends React.Component {
                             {this.renderArchived()}
                         </ol>: null}
                     </div>
-
-
                 </div>
             </div>
         );

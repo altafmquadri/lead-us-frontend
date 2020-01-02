@@ -84,10 +84,7 @@ class AppointmentUpdateForm extends React.Component {
 
 
     render () {
-        // console.log('i am state ',this.state)
-        // console.log('i am props ',this.props)
-        // console.log(this.props.clickedEditAppointment)
-        
+
         return (
             <div className="app-update-div">
                 <form onSubmit={this.onAptEditSubmission} 
@@ -139,7 +136,6 @@ class AppointmentUpdateForm extends React.Component {
                                             onChange={this.amountInputHandler}
                                             value={this.state.annualized_life_premium} />
                                 </div>}
-
 
                     <div className="submit-app-update">
                         <input className="submit-btn-app-update" type="submit" value="Submit"/>
