@@ -1,5 +1,6 @@
 .metrics-page {
     display: flex;
+    position: relative;
 }
 
 .weekly-appointments-metric {
@@ -44,11 +45,11 @@
     max-width: 400px;
     background-color: rgba(249, 244, 194, 0.3);
     color: #30011e;
-    float: right;
-    margin-right: 220px;
+    margin-right: 125px;
     margin-top: -200px;
     box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.2), 0 8px 5px 0 rgba(0, 0, 0, 0.24);
     margin-bottom: 45px;
+    margin-left: 775px;
 }
 
 .ratios h1 {

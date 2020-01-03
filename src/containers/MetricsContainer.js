@@ -181,6 +181,7 @@ class MetricsContainer extends React.Component {
 
                     <h1>Ratios</h1>
                     <hr></hr>
+                    <hr style={{zIndex: '5' }}></hr>
                     <h5>Show Ratio:{" "} {this.state.weekAppointments.length === 0 ? '-' : (parseFloat(this.state.presentations.length/this.state.weekAppointments.length)*100).toFixed(2) + '%'}</h5>
                     <h5>Close Ratio:{" "} {this.state.presentations.length === 0 ? '-' : (parseFloat(this.state.weeklyFilteredSales.length/this.state.presentations.length)*100).toFixed(2) + '%'}</h5>
                 </div>
