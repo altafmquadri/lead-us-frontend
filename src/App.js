@@ -11,7 +11,8 @@ import './App.css'
 
 import {Switch, Route, withRouter } from "react-router-dom";
 
-const api = 'http://localhost:3000/api/v1/auto_login'
+// const api = 'http://localhost:3000/api/v1/auto_login'
+const api = 'https://lead-us-backend.herokuapp.com/api/v1/auto_login'
 
 class App extends React.Component {
 

@@ -1,7 +1,8 @@
 import React from 'react';
 import NewLeadForm from '../components/NewLeadForm'
 
-const api = 'http://localhost:3000/api/v1/leads'
+// const api = 'http://localhost:3000/api/v1/leads'
+const api = 'https://lead-us-backend.herokuapp.com/api/v1/leads'
 
 class NewLeadContainer extends React.Component {
 
@@ -50,7 +51,7 @@ class NewLeadContainer extends React.Component {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                accepts: 'application/json' 
+                Accept: 'application/json' 
             },
             body: JSON.stringify({
 

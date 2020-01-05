@@ -1,7 +1,8 @@
 import React from 'react';
 import './Forms.css'
 
-const api = 'http://localhost:3000/api/v1/users'
+// const api = 'http://localhost:3000/api/v1/users'
+const api = 'https://lead-us-backend.herokuapp.com/api/v1/users'
 
 class SignupForm extends React.Component {
 
