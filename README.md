@@ -31,4 +31,4 @@ After Lead is created
 
 
 ### Objectives
-The web app was designed by collecting reuqirements from life insurance agents.  They wanted a tool to manage their clientele where they can clearly see their appointments, quickly obtain turn by turn directions when they are on the move from apointment to appointment.  The app also keeps track of their performance by displaying all key ratios of convesions from presentations to sales.
+The web app was designed by collecting requirements from life insurance agents.  They wanted a tool to manage their clientele where they can clearly see their appointments, quickly obtain turn by turn directions when they are on the move from apointment to appointment.  The app also keeps track of their performance by displaying all key ratios of conversions from presentations to sales.
