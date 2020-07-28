@@ -18,8 +18,8 @@ APIs used to make this project possible:
 
 * user logs in as an insurance agent
 * user can create a lead
-* user can view thier appointments in calendar format
-* user can view their sales perfomance
+* user can view their appointments in calendar format
+* user can view their sales performance
 
 User can action a lead
 * by calling
@@ -27,7 +27,7 @@ User can action a lead
 * closing a sale
 
 After Lead is created
-* user can get turn by turn directions from user's location to lead's location
+* user can get turn by turn directions from the user's location to the lead's location
 
 
 ### Objectives
